@@ -11,8 +11,8 @@ export default function Home() {
 
       <main>
         <div>
-          <p>Github: <a href="https://github.com/nhevia"> github.com/nhevia</a></p>
-          <p>Twitter: <a href="https://twitter.com/n_hevia"> twitter.com/n_hevia</a></p>
+          <p>Github: <a target="_blank" href="https://github.com/nhevia" rel="noreferrer"> github.com/nhevia</a></p>
+          <p>Twitter: <a target="_blank" href="https://twitter.com/n_hevia" rel="noreferrer"> twitter.com/n_hevia</a></p>
         </div>
       </main>
 
