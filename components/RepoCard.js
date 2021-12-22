@@ -4,7 +4,7 @@ import Fork from '../public/icons/fork.svg';
 
 const RepoCard = ({ repo }) => {
   return (
-    <div className="repo-card">
+    <>
       <span className="title">
         <span>
           <Repo />
@@ -30,7 +30,7 @@ const RepoCard = ({ repo }) => {
           <Fork /> {repo.forks}
         </span>
       </div>
-    </div>
+    </>
   );
 };
 

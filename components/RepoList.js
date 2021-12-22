@@ -4,7 +4,7 @@ const RepoList = ({ repos }) => {
   return (
     <div className="repo-list">
       {repos.map((repo) => (
-        <div key={repo.id}>
+        <div key={repo.id} className="repo-card">
           <RepoCard repo={repo} />
         </div>
       ))}
