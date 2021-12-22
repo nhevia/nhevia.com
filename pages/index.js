@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import RepoList from '../components/RepoList';
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div>
       <Head>
@@ -10,7 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <div>
+        <article className="links">
           <p>
             Github:
             <a
@@ -31,10 +32,31 @@ export default function Home() {
               twitter.com/n_hevia
             </a>
           </p>
-        </div>
+        </article>
+
+        <article className="projects">
+          <h3>Github projects</h3>
+          <div className="repo-list">
+            <RepoList repos={data} />
+          </div>
+        </article>
+
+        <article className="posts">
+          <h3>Posts</h3>
+          <p>...</p>
+        </article>
       </main>
 
       <footer>Nicolas Hevia @ 2021</footer>
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const response = await fetch('https://api.github.com/users/nhevia/repos');
+  const data = await response.json();
+
+  return {
+    props: { data },
+  };
+};
