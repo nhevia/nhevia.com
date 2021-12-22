@@ -1,39 +1,23 @@
 import Head from 'next/head';
+import Header from '../components/Header';
 import RepoList from '../components/RepoList';
 
 export default function Home({ data }) {
   return (
     <div>
       <Head>
-        <title>My site</title>
-        <meta name="description" content="my personal blog" />
+        <title>Nico&apos;s Blog</title>
+        <meta
+          name="description"
+          content="My personal blog. Listing all my projects, technical posts and random stuff."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header>
+        <Header />
+      </header>
       <main>
-        <article className="links">
-          <p>
-            Github:
-            <a
-              target="_blank"
-              href="https://github.com/nhevia"
-              rel="noreferrer"
-            >
-              github.com/nhevia
-            </a>
-          </p>
-          <p>
-            Twitter:
-            <a
-              target="_blank"
-              href="https://twitter.com/n_hevia"
-              rel="noreferrer"
-            >
-              twitter.com/n_hevia
-            </a>
-          </p>
-        </article>
-
         <article className="projects">
           <h3>Github projects</h3>
           <div className="repo-list">
