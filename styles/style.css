@@ -96,11 +96,6 @@
   flex-wrap: wrap;
 }
 
-.footer-content {
- 
-}
-
-
 @media (max-width: 600px) { 
   .projects, .posts {
     padding: 5px 10px;  
