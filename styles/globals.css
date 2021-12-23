@@ -23,9 +23,8 @@ a {
 }
 
 header {
-  top: 10px;
   min-width: 100%;
-  margin: auto;
+  padding: 5px 0px;
   background-color: var(--accent-background);
 }
 
@@ -38,7 +37,6 @@ main {
 
 footer {
   padding: 50px 0px;
-  margin-top: 20px;
   background-color: var(--accent-background);
   text-align: center;
   color: rgb(200,200,200);
