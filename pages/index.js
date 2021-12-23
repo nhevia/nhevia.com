@@ -1,12 +1,15 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import RepoList from '../components/RepoList';
 
 export default function Home({ data }) {
+  const [theme, setTheme] = useState('theme-light');
+
   return (
-    <div className="layout">
+    <div id="layout" className={`layout ${theme}`}>
       <Head>
-        <title>Nico&apos;s Blog</title>
+        <title>My site idk</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
@@ -19,7 +22,7 @@ export default function Home({ data }) {
       </Head>
 
       <header>
-        <Header />
+        <Header theme={theme} setTheme={setTheme} />
       </header>
       <main>
         <article className="projects">
@@ -31,9 +34,7 @@ export default function Home({ data }) {
 
         <article className="posts">
           <h3>Posts</h3>
-          <div className="post-list">
-            <div>...todo...</div>
-          </div>
+          <div className="post-list">{/* <div>...todo...</div> */}</div>
         </article>
       </main>
 
