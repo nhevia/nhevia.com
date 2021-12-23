@@ -8,6 +8,10 @@ export default function Home({ data }) {
       <Head>
         <title>Nico&apos;s Blog</title>
         <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+        />
+        <meta
           name="description"
           content="My personal blog. Listing all my projects, technical posts and random stuff."
         />
@@ -28,14 +32,14 @@ export default function Home({ data }) {
         <article className="posts">
           <h3>Posts</h3>
           <div className="post-list">
-            <div>...</div>
-            <div>...</div>
-            <div>...</div>
+            <div>...todo...</div>
           </div>
         </article>
       </main>
 
-      <footer>Nicolas Hevia @ 2021</footer>
+      <footer>
+        <span>Nicolas Hevia @ 2021</span>
+      </footer>
     </div>
   );
 }

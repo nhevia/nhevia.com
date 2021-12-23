@@ -1,15 +1,24 @@
 .projects, .posts {
-  padding: 20px 30px;  
+  padding: 0px 30px;
+}
+
+.posts {
+  padding: 20px 30px;
 }
 
 .header-icons {
   margin-right: 50px;
+  padding: 5px 0px;
   text-align: right;
 }
 
 .header-icons svg {
-  width: 40px;
-  height: 40px;
+  margin: 0px 20px;
+  fill: rgb(220,220,210);
+}
+
+.header-icons svg:hover {
+  fill: rgb(240,240,220);
 }
 
 .repo-list {
@@ -87,7 +96,20 @@
   flex-wrap: wrap;
 }
 
+.footer-content {
+ 
+}
+
+
 @media (max-width: 600px) { 
+  .projects, .posts {
+    padding: 5px 10px;  
+  }
+
+  .projects h3, .posts h3 {
+    text-align: center;
+  }
+
   .header-icons {
     text-align: center;
     margin-right: 0px;
@@ -95,6 +117,12 @@
 
   .repo-list {
     align-items: center;
+  }
+
+  .repo-card {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .post-list {
