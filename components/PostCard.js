@@ -1,33 +1,35 @@
+// TODO change to post
+
 import Repo from '../public/icons/repo.svg';
 import Star from '../public/icons/star.svg';
 import Fork from '../public/icons/fork.svg';
 
-const RepoCard = ({ item: post }) => {
+const RepoCard = ({ item: repo }) => {
   return (
     <>
       <span className="title">
         <span>
           <Repo />
         </span>
-        <a target="_blank" href={post.html_url} rel="noreferrer">
-          <span>{post.full_name}</span>
+        <a target="_blank" href={repo.html_url} rel="noreferrer">
+          <span>{repo.full_name}</span>
         </a>
       </span>
       <div className="description">
-        <span>{post.description}</span>
+        <span>{repo.description}</span>
       </div>
       <div className="footer">
         <span className="section">
-          <span className="yellow-circle" /> <span>{post.language}</span>
+          <span className="yellow-circle" /> <span>{repo.language}</span>
         </span>
         <span className="section">
           <span>
             <Star />
           </span>
-          <span>{post.stargazers_count}</span>
+          <span>{repo.stargazers_count}</span>
         </span>
         <span className="section">
-          <Fork /> {post.forks}
+          <Fork /> {repo.forks}
         </span>
       </div>
     </>

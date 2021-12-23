@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
-import RepoList from '../components/RepoList';
+import ContentList from '../components/ContentList';
+import RepoCard from '../components/RepoCard';
+import PostCard from '../components/PostCard';
 
 export default function Home({ data }) {
   const [theme, setTheme] = useState('theme-light');
@@ -28,13 +30,15 @@ export default function Home({ data }) {
         <article className="projects">
           <h3>Github projects</h3>
           <div className="repo-list">
-            <RepoList repos={data} />
+            <ContentList data={data} item={RepoCard} type="project" />
           </div>
         </article>
 
         <article className="posts">
           <h3>Posts</h3>
-          <div className="post-list">{/* <div>...todo...</div> */}</div>
+          <div className="repo-list">
+            <ContentList data={data} item={PostCard} type="post" />
+          </div>
         </article>
       </main>
 
