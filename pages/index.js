@@ -27,7 +27,11 @@ export default function Home({ data }) {
 
         <article className="posts">
           <h3>Posts</h3>
-          <p>...</p>
+          <div className="post-list">
+            <div>...</div>
+            <div>...</div>
+            <div>...</div>
+          </div>
         </article>
       </main>
 

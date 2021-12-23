@@ -78,3 +78,26 @@
   border-radius: 50%;
 }
 
+.post-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) { 
+  .header-icons {
+    text-align: center;
+    margin-right: 0px;
+  }
+
+  .repo-list {
+    align-items: center;
+  }
+
+  .post-list {
+    align-items: center;
+  }
+}
