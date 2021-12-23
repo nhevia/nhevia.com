@@ -1,3 +1,8 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .projects, .posts {
   padding: 0px 30px;
 }

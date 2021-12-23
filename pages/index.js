@@ -4,7 +4,7 @@ import RepoList from '../components/RepoList';
 
 export default function Home({ data }) {
   return (
-    <div>
+    <div className="layout">
       <Head>
         <title>Nico&apos;s Blog</title>
         <meta
