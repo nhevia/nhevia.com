@@ -1,9 +1,8 @@
 /*sdoc
 Reusable and responsive component to render a list of items.
-- `data`: array of items from an XHR result.
+- `data`: array of items
 - `item`: a component that represents a single item of this list
 - `type`: declarative way to link style classNames
-
 */
 
 const ContentList = (props) => {

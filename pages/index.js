@@ -5,7 +5,7 @@ import ContentList from '../components/ContentList';
 import RepoCard from '../components/RepoCard';
 import PostCard from '../components/PostCard';
 
-export default function Home({ data }) {
+export default function Home({ repoData, postData }) {
   const [theme, setTheme] = useState('theme-light');
 
   return (
@@ -29,15 +29,15 @@ export default function Home({ data }) {
       <main>
         <article className="projects">
           <h3>Github projects</h3>
-          <div className="repo-list">
-            <ContentList data={data} item={RepoCard} type="project" />
+          <div>
+            <ContentList data={repoData} item={RepoCard} type="project" />
           </div>
         </article>
 
         <article className="posts">
           <h3>Posts</h3>
-          <div className="repo-list">
-            <ContentList data={data} item={PostCard} type="post" />
+          <div>
+            <ContentList data={postData} item={PostCard} type="post" />
           </div>
         </article>
       </main>
@@ -50,10 +50,17 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const response = await fetch('https://api.github.com/users/nhevia/repos');
-  const data = await response.json();
+  const repoResponse = await fetch('https://api.github.com/users/nhevia/repos');
+  const repoData = await repoResponse.json();
+
+  // TODO will need to combine different sources later (md files, dev.to, etc)
+  // need standarized props and parse data into same object
+  const postResponse = await fetch(
+    'https://dev.to/api/articles?username=nicoh'
+  );
+  const postData = await postResponse.json();
 
   return {
-    props: { data },
+    props: { repoData, postData },
   };
 };
