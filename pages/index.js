@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import ContentList from '../components/ContentList';
 import RepoCard from '../components/RepoCard';
 import PostCard from '../components/PostCard';
+import fs from 'fs';
 
 export default function Home({ repoData, postData }) {
   const [theme, setTheme] = useState('theme-light');
@@ -49,16 +50,25 @@ export default function Home({ repoData, postData }) {
   );
 }
 
-export const getStaticProps = async () => {
-  const repoResponse = await fetch('https://api.github.com/users/nhevia/repos');
-  const repoData = await repoResponse.json();
+export const getServerSideProps = async () => {
+  // TODO remove local data later, just to reduce load in dev for now
+  let repoData, postData;
+  if (!process.env.NODE_ENV === 'development') {
+    repoData = JSON.parse(fs.readFileSync('data/repos.json').toString());
+    postData = JSON.parse(fs.readFileSync('data/posts.json').toString());
+  } else {
+    const repoResponse = await fetch(
+      'https://api.github.com/users/nhevia/repos'
+    );
+    repoData = await repoResponse.json();
 
-  // TODO will need to combine different sources later (md files, dev.to, etc)
-  // need standarized props and parse data into same object
-  const postResponse = await fetch(
-    'https://dev.to/api/articles?username=nicoh'
-  );
-  const postData = await postResponse.json();
+    // TODO will need to combine different sources later (md files, dev.to, etc)
+    // need standarized props and parse data into same object
+    const postResponse = await fetch(
+      'https://dev.to/api/articles?username=nicoh'
+    );
+    postData = await postResponse.json();
+  }
 
   return {
     props: { repoData, postData },
