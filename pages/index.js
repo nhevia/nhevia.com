@@ -53,7 +53,7 @@ export default function Home({ repoData, postData }) {
 export const getServerSideProps = async () => {
   // TODO remove local data later, just to reduce load in dev for now
   let repoData, postData;
-  if (!process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     repoData = JSON.parse(fs.readFileSync('data/repos.json').toString());
     postData = JSON.parse(fs.readFileSync('data/posts.json').toString());
   } else {
