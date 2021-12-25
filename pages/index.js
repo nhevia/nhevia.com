@@ -31,7 +31,13 @@ export default function Home({ repoData, postData }) {
         <article className="projects">
           <h3>Github projects</h3>
           <div>
-            <ContentList data={repoData} item={RepoCard} type="project" />
+            <ContentList
+              data={repoData.sort(
+                (a, b) => (a.stargazers_count > b.stargazers_count && -1) || 1
+              )}
+              item={RepoCard}
+              type="project"
+            />
           </div>
         </article>
 
