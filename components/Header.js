@@ -11,10 +11,20 @@ const Header = ({ theme, setTheme }) => {
 
   return (
     <div className="header-icons">
-      <a target="_blank" href="https://github.com/nhevia" rel="noreferrer">
+      <a
+        aria-label="Github"
+        target="_blank"
+        href="https://github.com/nhevia"
+        rel="noreferrer"
+      >
         <Github />
       </a>
-      <a target="_blank" href="https://twitter.com/n_hevia" rel="noreferrer">
+      <a
+        aria-label="Twitter"
+        target="_blank"
+        href="https://twitter.com/n_hevia"
+        rel="noreferrer"
+      >
         <Twitter />
       </a>
       {theme === 'theme-light' ? (

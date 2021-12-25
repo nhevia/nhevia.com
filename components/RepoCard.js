@@ -9,7 +9,12 @@ const RepoCard = ({ item: post }) => {
         <span>
           <Repo />
         </span>
-        <a target="_blank" href={post.html_url} rel="noreferrer">
+        <a
+          aria-label={post.full_name}
+          target="_blank"
+          href={post.html_url}
+          rel="noreferrer"
+        >
           <span>{post.full_name}</span>
         </a>
       </span>

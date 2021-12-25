@@ -13,10 +13,7 @@ export default function Home({ repoData, postData }) {
     <div id="layout" className={`layout ${theme}`}>
       <Head>
         <title>My site idk</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
           content="My personal blog. Listing all my projects, technical posts and random stuff."

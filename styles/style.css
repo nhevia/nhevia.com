@@ -120,6 +120,10 @@
   width: 100%;
 }
 
+.content-card-post .image {
+  min-height: 208px;
+}
+
 .content-card-post .description {
   margin: 8px 0px 16px 0px;
   font-size: 14px;
