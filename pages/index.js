@@ -12,7 +12,7 @@ export default function Home({ repoData, postData }) {
   return (
     <div id="layout" className={`layout ${theme}`}>
       <Head>
-        <title>My site idk</title>
+        <title>Nico Hevia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
