@@ -4,7 +4,12 @@ import Twitter from '../public/icons/twitter.svg';
 import Sun from '../public/icons/sun.svg';
 import Moon from '../public/icons/moon.svg';
 
-const Header = ({ theme, setTheme }) => {
+interface AppProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+const Header = ({ theme, setTheme }: AppProps) => {
   function handleTheme() {
     theme === 'theme-light' ? setTheme('theme-dark') : setTheme('theme-light');
   }
