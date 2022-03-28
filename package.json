@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "jest --watch",
     "lint": "next lint",
     "docs": "sdoc --file components"
   },
@@ -16,9 +17,13 @@
   },
   "devDependencies": {
     "@nhevia/simple-docs": "^0.6.5",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
     "@types/react": "^17.0.43",
+    "babel-jest": "^27.5.1",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
+    "jest": "^27.5.1",
     "typescript": "^4.6.3"
   }
 }
