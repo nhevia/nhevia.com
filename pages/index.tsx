@@ -5,8 +5,14 @@ import ContentList from '../components/ContentList';
 import RepoCard from '../components/RepoCard';
 import PostCard from '../components/PostCard';
 import fs from 'fs';
+import { Repository, Post } from '../types/types';
 
-export default function Home({ repoData, postData }) {
+interface AppProps {
+  repoData: Array<Repository>;
+  postData: Array<Post>;
+}
+
+export default function Home({ repoData, postData }: AppProps) {
   const [theme, setTheme] = useState('theme-light');
 
   return (
@@ -29,9 +35,15 @@ export default function Home({ repoData, postData }) {
           <h3>Github projects</h3>
           <div>
             <ContentList
-              data={repoData.sort(
-                (a, b) => (a.stargazers_count > b.stargazers_count && -1) || 1
-              )}
+              data={repoData.sort((a: Repository, b: Repository) => {
+                if (typeof a.stargazers_count === 'undefined')
+                  a.stargazers_count = 0;
+
+                if (typeof b.stargazers_count === 'undefined')
+                  b.stargazers_count = 0;
+
+                return a.stargazers_count > b.stargazers_count ? -1 : 1;
+              })}
               item={RepoCard}
               type="project"
             />
@@ -47,7 +59,7 @@ export default function Home({ repoData, postData }) {
       </main>
 
       <footer>
-        <span>Nicolas Hevia @ 2021</span>
+        <span>Nicolas Hevia @ 2022</span>
       </footer>
     </div>
   );
@@ -57,8 +69,8 @@ export const getServerSideProps = async () => {
   // TODO remove local data later, just to reduce load in dev for now
   let repoData, postData;
   if (process.env.NODE_ENV === 'development') {
-    repoData = JSON.parse(fs.readFileSync('data/repos.json').toString());
-    postData = JSON.parse(fs.readFileSync('data/posts.json').toString());
+    repoData = JSON.parse(fs.readFileSync('__mocks__/repos.json').toString());
+    postData = JSON.parse(fs.readFileSync('__mocks__/posts.json').toString());
   } else {
     const repoResponse = await fetch(
       'https://api.github.com/users/nhevia/repos'
