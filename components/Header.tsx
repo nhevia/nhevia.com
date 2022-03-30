@@ -15,7 +15,7 @@ const Header = ({ theme, setTheme }: AppProps) => {
   }
 
   return (
-    <div className="header-icons">
+    <header className="header-icons">
       <a
         aria-label="Github"
         target="_blank"
@@ -32,12 +32,10 @@ const Header = ({ theme, setTheme }: AppProps) => {
       >
         <Twitter />
       </a>
-      {theme === 'theme-light' ? (
-        <Sun onClick={handleTheme} />
-      ) : (
-        <Moon onClick={handleTheme} />
-      )}
-    </div>
+      <button onClick={handleTheme} style={{ all: 'unset' }}>
+        {theme === 'theme-light' ? <Sun /> : <Moon />}
+      </button>
+    </header>
   );
 };
 

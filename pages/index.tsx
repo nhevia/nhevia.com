@@ -27,9 +27,8 @@ export default function Home({ repoData, postData }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <Header theme={theme} setTheme={setTheme} />
-      </header>
+      <Header theme={theme} setTheme={setTheme} />
+
       <main>
         <article className="projects">
           <h3>Github projects</h3>
