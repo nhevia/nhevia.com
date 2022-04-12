@@ -4,17 +4,21 @@
   display: flex;
   flex-direction: column;
   background: var(--body-background);
+  transition: all 0.2s linear;
 }
 
-.projects, .posts {
+.projects,
+.posts {
   padding: 0px 30px;
 }
 
-.projects h3, .posts h3 {
+.projects h3,
+.posts h3,
+.stackoverflow h3 {
   color: var(--text-color);
 }
 
-.posts {
+.stackoverflow {
   padding: 20px 30px;
 }
 
@@ -26,12 +30,12 @@
 
 .header-icons svg {
   margin: 0px 20px;
-  fill: rgb(220,220,210);
+  fill: rgb(220, 220, 210);
   vertical-align: top;
 }
 
 .header-icons svg:hover {
-  fill: rgb(240,240,220);
+  fill: rgb(240, 240, 220);
 }
 
 /* Lists */
@@ -53,7 +57,7 @@
   height: 100%;
   padding: 16px;
   margin: 10px;
-  border: 1px solid var(--border-color); 
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 16px;
 }
@@ -82,7 +86,7 @@
 }
 
 .content-card-project .footer span {
-  display: inline-block;  
+  display: inline-block;
 }
 
 .content-card-project .footer svg {
@@ -111,7 +115,7 @@
   height: 100%;
   padding: 16px;
   margin: 10px;
-  border: 1px solid var(--border-color); 
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 16px;
 }
@@ -132,13 +136,26 @@
   flex: 1;
 }
 
+.content-card-stackoverflow {
+  width: 100%;
+  padding: 10px 15px;
+}
+
+.content-card-stackoverflow .score {
+  margin-left: 10px;
+  color: var(--text-desc-color);
+  font-size: 0.8rem;
+}
+
 /* Media queries  */
-@media (max-width: 600px) { 
-  .projects, .posts {
-    padding: 5px 10px;  
+@media (max-width: 600px) {
+  .projects,
+  .posts {
+    padding: 5px 10px;
   }
 
-  .projects h3, .posts h3 {
+  .projects h3,
+  .posts h3 {
     text-align: center;
   }
 
@@ -151,7 +168,8 @@
     align-items: center;
   }
 
-  .content-card-project, .content-card-post {
+  .content-card-project,
+  .content-card-post {
     margin-left: 0px;
     margin-right: 0px;
   }

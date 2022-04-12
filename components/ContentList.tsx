@@ -4,11 +4,11 @@ Reusable and responsive component to render a list of items.
 - `item`: a component that represents a single item of this list
 - `type`: declarative way to link style classNames
 */
-import { Repository, Post } from '../types/types';
+import { Repository, Post, So } from '../types/types';
 import RepoCard from './RepoCard';
 
 interface AppProps {
-  data: Array<Repository | Post>;
+  data: Array<Repository | Post | So>;
   type: string;
   item: React.FC<any>; // TODO React.FC<Repository | Post>
 }

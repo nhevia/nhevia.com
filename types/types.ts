@@ -15,3 +15,10 @@ export interface Post {
   description?: string;
   id?: number;
 }
+
+export interface So {
+  score: number;
+  id: number;
+  link: string;
+  title: string;
+}

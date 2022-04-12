@@ -4,15 +4,17 @@ import Header from '../components/Header';
 import ContentList from '../components/ContentList';
 import RepoCard from '../components/RepoCard';
 import PostCard from '../components/PostCard';
+import SoCard from '../components/SoCard';
 import fs from 'fs';
-import { Repository, Post } from '../types/types';
+import { Repository, Post, So } from '../types/types';
 
 interface AppProps {
   repoData: Array<Repository>;
   postData: Array<Post>;
+  soData: Array<So>;
 }
 
-export default function Home({ repoData, postData }: AppProps) {
+export default function Home({ repoData, postData, soData }: AppProps) {
   const [theme, setTheme] = useState('theme-light');
 
   return (
@@ -20,11 +22,6 @@ export default function Home({ repoData, postData }: AppProps) {
       <Head>
         <title>Nico Hevia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="My personal blog. Listing all my projects, technical posts and random stuff."
-        />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header theme={theme} setTheme={setTheme} />
@@ -55,6 +52,18 @@ export default function Home({ repoData, postData }: AppProps) {
             <ContentList data={postData} item={PostCard} type="post" />
           </div>
         </article>
+
+        <article className="stackoverflow">
+          <h3>
+            Stack Overflow{' '}
+            <span style={{ fontSize: 14, fontWeight: '400' }}>
+              (sort: votes / count: 5)
+            </span>
+          </h3>
+          <div>
+            <ContentList data={soData} item={SoCard} type="stackoverflow" />
+          </div>
+        </article>
       </main>
 
       <footer>
@@ -66,10 +75,12 @@ export default function Home({ repoData, postData }: AppProps) {
 
 export const getServerSideProps = async () => {
   // TODO remove local data later, just to reduce load in dev for now
-  let repoData, postData;
+  let repoData, postData, normalizedSoData;
   if (process.env.NODE_ENV === 'development') {
     repoData = JSON.parse(fs.readFileSync('__mocks__/repos.json').toString());
     postData = JSON.parse(fs.readFileSync('__mocks__/posts.json').toString());
+    const soData = JSON.parse(fs.readFileSync('__mocks__/so.json').toString());
+    normalizedSoData = soData.items.map((i: any) => ({ ...i, id: i.post_id }));
   } else {
     const repoResponse = await fetch(
       'https://api.github.com/users/nhevia/repos'
@@ -82,9 +93,15 @@ export const getServerSideProps = async () => {
       'https://dev.to/api/articles?username=nicoh'
     );
     postData = await postResponse.json();
+
+    const soResponse = await fetch(
+      'https://api.stackexchange.com/2.3/users/6402990/posts?pagesize=5&order=desc&sort=votes&site=stackoverflow&filter=!nKzQUR.3CQ'
+    );
+    const soData = await soResponse.json();
+    normalizedSoData = soData.items.map((i: any) => ({ ...i, id: i.post_id }));
   }
 
   return {
-    props: { repoData, postData },
+    props: { repoData, postData, soData: normalizedSoData },
   };
 };
