@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-		"strict": true,
-		"strictFunctionTypes": true,
-		"strictBindCallApply": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -24,12 +21,6 @@
     "jsx": "preserve",
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
