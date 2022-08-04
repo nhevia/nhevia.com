@@ -1,23 +1,23 @@
 import { render, screen } from '@testing-library/react';
 import fs from 'fs';
-import PostCard from '../components/PostCard';
-import { Post } from '../types/types';
+import BlogpostCard from './BlogpostCard';
+import { Post } from 'types/items';
 
-describe('<PostCard />', () => {
+describe('BlogpostCard', () => {
   let postProps: Post;
   beforeAll(
     () =>
       (postProps = JSON.parse(
-        fs.readFileSync('__mocks__/posts.json').toString()
+        fs.readFileSync('src/__mocks__/posts.json').toString()
       )[0])
   );
 
   it('renders the component without any props', () => {
-    render(<PostCard />);
+    render(<BlogpostCard />);
   });
 
   it('renders the component with full props', () => {
-    render(<PostCard {...postProps} />);
+    render(<BlogpostCard {...postProps} />);
 
     const url = screen.getAllByRole('link')[0];
 

@@ -1,24 +1,25 @@
+import fs from 'fs';
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
-import ContentList from '../components/ContentList';
-import RepoCard from '../components/RepoCard';
-import PostCard from '../components/PostCard';
-import SoCard from '../components/SoCard';
-import fs from 'fs';
-import { Repository, Post, So } from '../types/types';
+import Header from 'components/ui/Header';
+import List from 'components/ui/List/List';
+import { RepositoryCard } from 'components/items/repository';
+import { BlogpostCard } from 'components/items/blogpost';
+import { StackoverflowCard } from 'components/items/stackoverflow';
+import { Repository, Post, So } from 'types/items';
+import s from './index.module.css';
 
-interface AppProps {
+interface Props {
   repoData: Array<Repository>;
   postData: Array<Post>;
   soData: Array<So>;
 }
 
-export default function Home({ repoData, postData, soData }: AppProps) {
+export default function Home({ repoData, postData, soData }: Props) {
   const [theme, setTheme] = useState('theme-light');
 
   return (
-    <div id="layout" className={`layout ${theme}`}>
+    <div id="layout" className={`${s.root} ${theme}`}>
       <Head>
         <title>Nico Hevia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,11 +28,11 @@ export default function Home({ repoData, postData, soData }: AppProps) {
       <Header theme={theme} setTheme={setTheme} />
 
       <main>
-        <article className="projects">
+        <article className={s.projects}>
           <h3>Github projects</h3>
           <div>
-            <ContentList
-              data={repoData.sort((a: Repository, b: Repository) => {
+            <List
+              items={repoData.sort((a: Repository, b: Repository) => {
                 if (typeof a.stargazers_count === 'undefined')
                   a.stargazers_count = 0;
 
@@ -40,20 +41,24 @@ export default function Home({ repoData, postData, soData }: AppProps) {
 
                 return a.stargazers_count > b.stargazers_count ? -1 : 1;
               })}
-              item={RepoCard}
-              type="project"
+              renderItem={RepositoryCard}
+              className={s.contentList}
             />
           </div>
         </article>
 
-        <article className="posts">
+        <article className={s.posts}>
           <h3>Posts</h3>
           <div>
-            <ContentList data={postData} item={PostCard} type="post" />
+            <List
+              items={postData}
+              renderItem={BlogpostCard}
+              className={s.contentList}
+            />
           </div>
         </article>
 
-        <article className="stackoverflow">
+        <article className={s.stackoverflow}>
           <h3>
             Stack Overflow{' '}
             <span style={{ fontSize: 14, fontWeight: '400' }}>
@@ -61,7 +66,11 @@ export default function Home({ repoData, postData, soData }: AppProps) {
             </span>
           </h3>
           <div>
-            <ContentList data={soData} item={SoCard} type="stackoverflow" />
+            <List
+              items={soData}
+              renderItem={StackoverflowCard}
+              as={React.Fragment}
+            />
           </div>
         </article>
       </main>
@@ -77,10 +86,20 @@ export const getServerSideProps = async () => {
   // TODO remove local data later, just to reduce load in dev for now
   let repoData, postData, normalizedSoData;
   if (process.env.NODE_ENV === 'development') {
-    repoData = JSON.parse(fs.readFileSync('__mocks__/repos.json').toString());
-    postData = JSON.parse(fs.readFileSync('__mocks__/posts.json').toString());
-    const soData = JSON.parse(fs.readFileSync('__mocks__/so.json').toString());
-    normalizedSoData = soData.items.map((i: any) => ({ ...i, id: i.post_id }));
+    repoData = JSON.parse(
+      fs.readFileSync('src/__mocks__/repos.json').toString()
+    );
+    postData = JSON.parse(
+      fs.readFileSync('src/__mocks__/posts.json').toString()
+    );
+    const soData = JSON.parse(
+      fs.readFileSync('src/__mocks__/so.json').toString()
+    );
+    normalizedSoData = soData.items.map((i: any) => ({
+      ...i,
+      id: i.post_id,
+      carlos: 'dasdsd',
+    }));
   } else {
     const repoResponse = await fetch(
       'https://api.github.com/users/nhevia/repos'

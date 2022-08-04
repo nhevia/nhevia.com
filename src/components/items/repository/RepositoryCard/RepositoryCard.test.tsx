@@ -1,23 +1,22 @@
 import { render, screen } from '@testing-library/react';
 import fs from 'fs';
-import RepoCard from '../components/RepoCard';
-import { Repository } from '../types/types';
+import RepositoryCard from './RepositoryCard';
+import { Repository } from 'types/items';
 
-describe('<RepoCard />', () => {
+describe('RepositoryCard', () => {
   let repoProps: Repository;
-  beforeAll(
-    () =>
-      (repoProps = JSON.parse(
-        fs.readFileSync('__mocks__/repos.json').toString()
-      )[0])
-  );
+  beforeAll(() => {
+    repoProps = JSON.parse(
+      fs.readFileSync('src/__mocks__/repos.json').toString()
+    )[0];
+  });
 
   it('renders the component without any props', () => {
-    render(<RepoCard />);
+    render(<RepositoryCard />);
   });
 
   it('renders the component with full props', () => {
-    render(<RepoCard {...repoProps} />);
+    render(<RepositoryCard {...repoProps} />);
 
     const url = screen.getByRole('link');
     const title = screen.getByTestId('title');

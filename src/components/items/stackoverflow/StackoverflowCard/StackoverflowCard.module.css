@@ -1,0 +1,10 @@
+.root {
+  width: 100%;
+  padding: 10px 15px;
+}
+
+.score {
+  margin-left: 10px;
+  color: var(--text-desc-color);
+  font-size: 0.8rem;
+}

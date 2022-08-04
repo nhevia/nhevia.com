@@ -17,8 +17,8 @@ export interface Post {
 }
 
 export interface So {
-  score: number;
-  id: number;
-  link: string;
-  title: string;
+  score?: number;
+  id?: number;
+  link?: string;
+  title?: string;
 }

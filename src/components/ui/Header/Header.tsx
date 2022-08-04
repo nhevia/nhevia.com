@@ -1,21 +1,22 @@
 import React from 'react';
-import Github from '../public/icons/github.svg';
-import Twitter from '../public/icons/twitter.svg';
-import Sun from '../public/icons/sun.svg';
-import Moon from '../public/icons/moon.svg';
+import Github from 'public/icons/github.svg';
+import Twitter from 'public/icons/twitter.svg';
+import Sun from 'public/icons/sun.svg';
+import Moon from 'public/icons/moon.svg';
+import s from './Header.module.css';
 
-interface AppProps {
+interface Props {
   theme: string;
   setTheme: (theme: string) => void;
 }
 
-const Header = ({ theme, setTheme }: AppProps) => {
+const Header = ({ theme, setTheme }: Props) => {
   function handleTheme() {
     theme === 'theme-light' ? setTheme('theme-dark') : setTheme('theme-light');
   }
 
   return (
-    <header className="header-icons">
+    <header className={s.root}>
       <a
         aria-label="Github"
         target="_blank"
@@ -32,7 +33,12 @@ const Header = ({ theme, setTheme }: AppProps) => {
       >
         <Twitter />
       </a>
-      <button onClick={handleTheme} style={{ all: 'unset' }}>
+      <button
+        onClick={handleTheme}
+        aria-label={`change to ${
+          theme === 'theme-light' ? 'dark' : 'light'
+        } theme`}
+      >
         {theme === 'theme-light' ? <Sun /> : <Moon />}
       </button>
     </header>
