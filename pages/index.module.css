@@ -1,0 +1,48 @@
+.root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--body-background);
+  transition: all 0.2s linear;
+}
+
+.projects,
+.posts,
+.stackoverflow {
+  padding: 20px 30px;
+}
+
+.projects h3,
+.posts h3,
+.stackoverflow h3 {
+  color: var(--text-color);
+}
+
+.stackoverflow {
+  padding: 20px 30px;
+}
+
+.contentList {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .projects,
+  .posts,
+  .stackoverflow {
+    padding: 5px 10px;
+  }
+
+  .root h3 {
+    text-align: center;
+  }
+
+  .content-list {
+    align-items: center;
+  }
+}

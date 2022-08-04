@@ -1,0 +1,26 @@
+.root {
+  margin-right: 50px;
+  padding: 10px 0px;
+  text-align: right;
+}
+
+.root svg {
+  margin: 0px 20px;
+  fill: rgb(220, 220, 210);
+  vertical-align: top;
+}
+
+.root svg:hover {
+  fill: rgb(240, 240, 220);
+}
+
+.root button {
+  all: unset;
+}
+
+@media (max-width: 600px) {
+  .root {
+    text-align: center;
+    margin-right: 0px;
+  }
+}
