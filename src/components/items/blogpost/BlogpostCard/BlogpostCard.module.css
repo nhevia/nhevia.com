@@ -6,9 +6,16 @@
   height: 100%;
   padding: 16px;
   margin: 10px;
-  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 16px;
+}
+
+.root:hover {
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-elevation-medium);
+  background-color: var(--body-background-hover);
+  transition: box-shadow 0.1s linear, background-color 0.1s linear;
 }
 
 .root img {
@@ -17,6 +24,15 @@
 
 .image {
   min-height: 208px;
+}
+
+.text-container {
+  margin-top: 10px;
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: 0.8px;
 }
 
 .description {
