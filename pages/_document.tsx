@@ -9,16 +9,16 @@ class MyDocument extends Document {
             name="description"
             content="My personal blog. Listing all my projects, technical posts and random stuff."
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap"
-            rel="preload"
-            type="text/css"
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@600;800&display=swap"
             rel="stylesheet"
-            type="text/css"
-          ></link>
+          />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>

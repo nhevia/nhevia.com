@@ -2,6 +2,7 @@ import React from 'react';
 import Repo from 'public/icons/repo.svg';
 import Star from 'public/icons/star.svg';
 import Fork from 'public/icons/fork.svg';
+import { getLanguageColor } from 'utils/colors';
 import { Repository } from 'types/items';
 import s from './RepositoryCard.module.css';
 
@@ -35,7 +36,12 @@ const Card = ({
       </div>
       <div className={s.footer}>
         <span className={s.section}>
-          <span className={s['yellow-circle']} />{' '}
+          <span
+            className={s.circle}
+            style={
+              language ? { backgroundColor: getLanguageColor(language) } : {}
+            }
+          />
           <span data-testid="language">{language}</span>
         </span>
         <span className={s.section}>

@@ -16,13 +16,17 @@ const BlogpostCard = ({ id, url, title, social_image, description }: Post) => {
           />
         </a>
       </span>
-      <span>
-        <a aria-label="" target="_blank" href={url} rel="noreferrer">
-          <span data-testid="title">{title}</span>
-        </a>
-      </span>
-      <div className={s.description}>
-        <span data-testid="description">{description}</span>
+      <div className={s['text-container']}>
+        <span>
+          <a aria-label="" target="_blank" href={url} rel="noreferrer">
+            <span className={s.title} data-testid="title">
+              {title}
+            </span>
+          </a>
+        </span>
+        <div className={s.description}>
+          <span data-testid="description">{description}</span>
+        </div>
       </div>
       <div className={s.footer}></div>
     </div>

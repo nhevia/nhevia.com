@@ -2,13 +2,19 @@
   display: flex;
   flex-direction: column;
   width: 426px;
-  min-height: 150px;
+  min-height: 156px;
   height: 100%;
   padding: 16px;
   margin: 10px;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 1em;
+}
+
+.root:hover {
+  box-shadow: var(--shadow-elevation-medium);
+  background-color: var(--body-background-hover);
+  transition: all 0.1s linear;
 }
 
 .title {
@@ -49,11 +55,11 @@
   margin-right: 20px;
 }
 
-.footer .yellow-circle {
-  background-color: #f1e05a;
+.circle {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 
 @media (max-width: 600px) {
