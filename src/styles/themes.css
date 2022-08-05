@@ -1,17 +1,19 @@
 .theme-light {
   --body-background: white;
-  --accent-background: rgba(49,49,94);
+  --accent-background: rgba(49, 49, 94);
   --text-color: #35383b;
   --text-desc-color: #464a52ee;
   --text-link: #0254b4;
   --border-color: #d0d7de;
+  --accent: #35383b;
 }
 
 .theme-dark {
-  --body-background: #181818;
-  --accent-background: rgb(32,32,32);
+  --body-background: #22272e;
+  --accent-background: #262b32;
   --text-color: rgb(197, 194, 194);
   --text-desc-color: #a9b0b6;
   --text-link: #74afff;
   --border-color: #444c56;
+  --accent: rgb(187, 134, 252);
 }

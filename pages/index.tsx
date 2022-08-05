@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Home({ repoData, postData, soData }: Props) {
-  const [theme, setTheme] = useState('theme-light');
+  const [theme, setTheme] = useState('theme-dark');
 
   return (
     <div id="layout" className={`${s.root} ${theme}`}>
@@ -29,7 +29,8 @@ export default function Home({ repoData, postData, soData }: Props) {
 
       <main>
         <article className={s.projects}>
-          <h3>Github projects</h3>
+          <h3 className={s.label}>Github repos</h3>
+
           <div>
             <List
               items={repoData.sort((a: Repository, b: Repository) => {
@@ -48,7 +49,8 @@ export default function Home({ repoData, postData, soData }: Props) {
         </article>
 
         <article className={s.posts}>
-          <h3>Posts</h3>
+          <h3 className={s.label}>Blog Posts</h3>
+
           <div>
             <List
               items={postData}
@@ -59,12 +61,8 @@ export default function Home({ repoData, postData, soData }: Props) {
         </article>
 
         <article className={s.stackoverflow}>
-          <h3>
-            Stack Overflow{' '}
-            <span style={{ fontSize: 14, fontWeight: '400' }}>
-              (sort: votes / count: 5)
-            </span>
-          </h3>
+          <h3 className={s.label}>StackOverflow activity</h3>
+
           <div>
             <List
               items={soData}

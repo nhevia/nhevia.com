@@ -8,14 +8,35 @@
 
 .projects,
 .posts,
-.stackoverflow {
+.stackoverflow,
+.about {
   padding: 20px 30px;
+  width: 100%;
+}
+
+.about {
+  max-width: 520px;
+  padding-bottom: 0px;
 }
 
 .projects h3,
 .posts h3,
 .stackoverflow h3 {
+  margin: 15px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1.5em;
   color: var(--text-color);
+}
+
+
+.label::before {
+  content: '|';
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-right: 10px;
+  color: var(--accent);
 }
 
 .stackoverflow {
