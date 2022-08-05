@@ -1,11 +1,12 @@
 .root {
   margin-right: 50px;
-  padding: 10px 0px;
-  text-align: right;
+  padding: 15px 0px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .root svg {
-  margin: 0px 20px;
+  margin: 0px 40px;
   fill: rgb(220, 220, 210);
   vertical-align: top;
 }
@@ -20,7 +21,11 @@
 
 @media (max-width: 600px) {
   .root {
+    display: block;
     text-align: center;
-    margin-right: 0px;
+  }
+
+  .root svg {
+    margin: 0px 25px;
   }
 }
