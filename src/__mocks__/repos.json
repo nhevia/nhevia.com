@@ -90,9 +90,7 @@
     "license": null,
     "allow_forking": true,
     "is_template": false,
-    "topics": [
-      "react"
-    ],
+    "topics": ["react"],
     "visibility": "public",
     "forks": 0,
     "open_issues": 7,
@@ -196,12 +194,7 @@
     },
     "allow_forking": true,
     "is_template": false,
-    "topics": [
-      "action",
-      "actions",
-      "discord",
-      "discord-webhook"
-    ],
+    "topics": ["action", "actions", "discord", "discord-webhook"],
     "visibility": "public",
     "forks": 3,
     "open_issues": 2,
@@ -285,7 +278,7 @@
     "size": 179,
     "stargazers_count": 0,
     "watchers_count": 0,
-    "language": "JavaScript",
+    "language": "TypeScript",
     "has_issues": true,
     "has_projects": true,
     "has_downloads": true,
@@ -299,9 +292,7 @@
     "license": null,
     "allow_forking": true,
     "is_template": false,
-    "topics": [
-
-    ],
+    "topics": [],
     "visibility": "public",
     "forks": 0,
     "open_issues": 0,

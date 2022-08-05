@@ -49,11 +49,11 @@
   margin-right: 20px;
 }
 
-.footer .yellow-circle {
-  background-color: #f1e05a;
+.circle {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 
 @media (max-width: 600px) {
