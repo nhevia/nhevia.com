@@ -30,13 +30,15 @@ export default function Home({ repoData, postData, soData }: Props) {
       <main>
         <article className={s.about}>
           <p className={s.me}>
-            Hi. I&apos;m{' '}
-            <span style={{ color: 'var(--accent)' }}>Nicolas Hevia</span>, a web
-            developer.
+            Hi. I&apos;m
+            <div className={s['name-container']}>
+              <div className={s.name}>Nicolas Hevia</div>
+            </div>
+            , a web developer.
           </p>
         </article>
         <article className={s.projects}>
-          <h3 className={s.label}>Github repos</h3>
+          <h3 className={s.label}>Projects Repos</h3>
 
           <div>
             <List
