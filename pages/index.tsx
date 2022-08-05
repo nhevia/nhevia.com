@@ -28,6 +28,13 @@ export default function Home({ repoData, postData, soData }: Props) {
       <Header theme={theme} setTheme={setTheme} />
 
       <main>
+        <article className={s.about}>
+          <p className={s.me}>
+            Hi. I&apos;m{' '}
+            <span style={{ color: 'var(--accent)' }}>Nicolas Hevia</span>, a web
+            developer.
+          </p>
+        </article>
         <article className={s.projects}>
           <h3 className={s.label}>Github repos</h3>
 

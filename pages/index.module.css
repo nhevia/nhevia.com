@@ -30,6 +30,14 @@
   color: var(--text-color);
 }
 
+.me {
+  font-weight: 800;
+  font-size: 3em;
+  font-family: 'Playfair Display';
+  color: var(--text-color);
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
 
 .label::before {
   content: '|';
