@@ -9,7 +9,7 @@ import 'styles/globals.css';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 1000,
+      cacheTime: 1000 * 60 * 60 * 24,
     },
   },
 });
@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <ReactQueryDevtools initialIsOpen />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
