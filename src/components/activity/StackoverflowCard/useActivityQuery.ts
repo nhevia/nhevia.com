@@ -1,14 +1,26 @@
 import { useEffect } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 
-export default function usePersistedQuery(key: string, url = `/api/${key}`) {
+export default function useActivityQuery(key: string) {
   const queryClient = useQueryClient();
 
   const getActivity = async () => {
-    // if no URL param, get the key
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
+    const response = await fetch(
+      'https://api.stackexchange.com/2.3/users/6402990?site=stackoverflow'
+    );
+    const data = await response.json();
+
+    const responseTop = await fetch(
+      'https://stackoverflow.com/users/rank?userId=6402990'
+    );
+
+    const ratingText = (await responseTop.text())
+      .trim()
+      .replace(/(<([^>]+)>)/gi, '');
+
+    const userInfo = { ...data.items[0], rating: ratingText };
+
+    return userInfo;
   };
 
   const { data, refetch } = useQuery(key, getActivity, {

@@ -1,1 +1,1 @@
-export { default as CardStackoverflow } from './stackoverflow';
+export { default as StackoverflowCard } from './StackoverflowCard';

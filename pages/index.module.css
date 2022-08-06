@@ -15,8 +15,8 @@
 }
 
 .about {
-  max-width: 590px;
-  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .projects h3,
@@ -30,7 +30,9 @@
   color: var(--text-color);
 }
 
-.me {
+.introduction {
+  max-width: 500px;
+  padding-bottom: 0px;
   font-weight: 800;
   font-size: 3em;
   font-family: 'Playfair Display';
@@ -93,13 +95,17 @@
     padding: 5px 10px;
   }
 
+  .about {
+    flex-direction: column;
+    align-items: center;
+  }
   .projects h3,
   .posts h3,
   .stackoverflow h3 {
     margin-left: 0px;
   }
 
-  .me {
+  .introduction {
     font-size: 2.5em;
     margin-bottom: 20px;
   }

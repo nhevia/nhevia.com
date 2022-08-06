@@ -5,7 +5,7 @@ import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
-import { CardStackoverflow } from 'components/activity';
+import { StackoverflowCard } from 'components/activity';
 import { Repository, Post } from 'types/items';
 import s from './index.module.css';
 
@@ -28,7 +28,7 @@ export default function Home({ repoData, postData }: Props) {
 
       <main>
         <article className={s.about}>
-          <div className={s.me}>
+          <div className={s.introduction}>
             Hi. I&apos;m
             <span className={s['name-container']}>
               <span className={s.name}>Nicolas Hevia</span>
@@ -37,7 +37,7 @@ export default function Home({ repoData, postData }: Props) {
           </div>
 
           <div>
-            <CardStackoverflow />
+            <StackoverflowCard />
           </div>
         </article>
         <article className={s.projects}>
