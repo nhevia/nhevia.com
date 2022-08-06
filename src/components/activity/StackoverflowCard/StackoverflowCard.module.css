@@ -1,9 +1,9 @@
 .root {
   max-width: 100%;
   height: 100%;
-  background-color: var(--border-color);
+  background-color: var(--floaty-background);
+  border: 1px solid var(--floaty-border);
   padding: 10px;
-  color: var(--text-color);
   font-size: 0.85em;
   font-family: sans-serif;
 }
@@ -21,6 +21,10 @@
 }
 .card g:nth-child(5) {
   animation-delay: 0.9s;
+}
+
+.soimage {
+  filter: var(--floaty-image-filter);
 }
 
 @keyframes fadeInAnimation {

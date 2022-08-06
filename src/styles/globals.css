@@ -38,7 +38,7 @@ main {
   flex: 1;
   margin-top: 20px;
   margin-bottom: 80px;
-  padding: 0px;
+  padding: 0px 200px;
 }
 
 footer {
@@ -52,6 +52,18 @@ footer {
 
 * {
   box-sizing: border-box;
+}
+
+@media (max-width: 1500px) {
+  main {
+    padding: 0px 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  main {
+    padding: 0px;
+  }
 }
 
 @media (max-width: 600px) {

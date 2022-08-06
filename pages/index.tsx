@@ -5,7 +5,7 @@ import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
-import { StackoverflowCard } from 'components/activity';
+import { StackoverflowCard, Skills } from 'components/activity';
 import { Repository, Post } from 'types/items';
 import s from './index.module.css';
 
@@ -36,8 +36,9 @@ export default function Home({ repoData, postData }: Props) {
             , a web developer.
           </div>
 
-          <div>
+          <div className={s.activity}>
             <StackoverflowCard />
+            <Skills />
           </div>
         </article>
         <article className={s.projects}>

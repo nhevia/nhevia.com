@@ -54,24 +54,30 @@ const StackoverflowCard = () => {
                 href="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg"
                 height="30"
                 width="150"
+                className={s.soimage}
               />
             </svg>
           </a>
           <g>
-            <text x="0" y="70" fill="var(--text-color)">
+            <text x="0" y="70" fill="var(--floaty-background-text)">
               Reputation: {item.reputation}
             </text>
           </g>
           <g>
-            <text x="0" y="105" fill="var(--text-color)">
+            <text x="0" y="105" fill="var(--floaty-background-text)">
               Rating: {item.rating}
             </text>
           </g>
           <g>
-            <text x="0" y="140" fill="var(--text-color)">
+            <text x="0" y="140" fill="var(--floaty-background-text)">
               Badges:
             </text>
-            <text x="65" y="140" fill="var(--text-color)" className={s.line}>
+            <text
+              x="65"
+              y="140"
+              fill="var(--floaty-background-text)"
+              className={s.line}
+            >
               <tspan fill="#F1B600">● {item.badge_counts.gold}</tspan>
               <tspan fill="#9A9B9E" dx="1em">
                 ● {item.badge_counts.silver}
