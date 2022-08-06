@@ -11,10 +11,10 @@ describe('StackoverflowCard', () => {
   });
 
   it('shows a stackoverflow card with a link, title and score', () => {
-    render(<StackoverflowCard {...soProps} />);
+    render(<StackoverflowCard />);
 
     expect(
-      screen.getByLabelText('stackoverflow answer summary')
+      screen.getByLabelText('stackoverflow activity card')
     ).toBeInTheDocument();
 
     expect(screen.getByText('(score: 1107)')).toBeInTheDocument();
