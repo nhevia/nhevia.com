@@ -17,20 +17,29 @@ const Card = ({
 }: Repository) => {
   return (
     <div key={id} className={s.root} aria-label="repository summary">
-      <span className={s.title}>
+      <div className={s.borders}>
+        <svg preserveAspectRatio="none">
+          <rect x="0" y="0" width="100%" height="100%" />
+        </svg>
+      </div>
+
+      <div className={s.title}>
         <span>
           <Repo />
         </span>
-        <a
-          aria-label={full_name}
-          target="_blank"
-          href={html_url}
-          rel="noreferrer"
-          data-testid="url"
-        >
-          <span data-testid="title">{full_name}</span>
-        </a>
-      </span>
+        <span className={s['link-container']}>
+          <a
+            className={s.link}
+            aria-label={full_name}
+            target="_blank"
+            href={html_url}
+            rel="noreferrer"
+            data-testid="url"
+          >
+            <span data-testid="title">{full_name}</span>
+          </a>
+        </span>
+      </div>
       <div className={s.description}>
         <span data-testid="description">{description}</span>
       </div>

@@ -29,13 +29,13 @@ export default function Home({ repoData, postData, soData }: Props) {
 
       <main>
         <article className={s.about}>
-          <p className={s.me}>
+          <div className={s.me}>
             Hi. I&apos;m
-            <div className={s['name-container']}>
-              <div className={s.name}>Nicolas Hevia</div>
-            </div>
+            <span className={s['name-container']}>
+              <span className={s.name}>Nicolas Hevia</span>
+            </span>
             , a web developer.
-          </p>
+          </div>
         </article>
         <article className={s.projects}>
           <h3 className={s.label}>Projects Repos</h3>

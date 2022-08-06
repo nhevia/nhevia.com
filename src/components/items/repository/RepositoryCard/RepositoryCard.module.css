@@ -6,12 +6,12 @@
   height: 100%;
   padding: 16px;
   margin: 10px;
-  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 1em;
+  position: relative;
 }
 
-.root:hover {
+.root {
   box-shadow: var(--shadow-elevation-medium);
   background-color: var(--body-background-hover);
   transition: all 0.1s linear;
@@ -25,6 +25,22 @@
 .title svg {
   margin-right: 5px;
   fill: var(--text-desc-color);
+}
+
+.link-container {
+  position: relative;
+}
+
+.root:hover .link::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  animation: expand 0.15s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .description {
@@ -62,9 +78,47 @@
   margin-right: 5px;
 }
 
+.borders {
+  display: none;
+}
+
+.root:hover .borders {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.root:hover .borders svg {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.root:hover .borders rect {
+  fill: transparent;
+  stroke: var(--accent);
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: change 0.45s ease-out forwards;
+}
+
 @media (max-width: 600px) {
   .root {
     margin-left: 0px;
     margin-right: 0px;
+  }
+}
+
+@keyframes expand {
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes change {
+  to {
+    stroke-dashoffset: 0;
   }
 }

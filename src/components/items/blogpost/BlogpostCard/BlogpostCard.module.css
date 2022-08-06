@@ -15,7 +15,8 @@
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-elevation-medium);
   background-color: var(--body-background-hover);
-  transition: box-shadow 0.1s linear, background-color 0.1s linear;
+  transition: box-shadow 0.1s linear, background-color 0.1s linear,
+    border-color 0.1s linear;
 }
 
 .root img {
