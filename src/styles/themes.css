@@ -9,6 +9,10 @@
   --border-color: #d0d7de;
   --accent: #35383b;
   --background-shadow: #979fab;
+  --floaty-background: #fdfbfb;
+  --floaty-background-text: #35383b;
+  --floaty-border: #d0d7de;
+  --floaty-image-filter: none;
   --shadow-color: 0deg 0% 63%;
   --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
     0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
@@ -38,6 +42,10 @@
   --border-color: #444c56;
   --accent: #4f7bb8;
   --background-shadow: #2f2f2f;
+  --floaty-background: #24282f;
+  --floaty-background-text: #fdfbfb;
+  --floaty-border: #444c56;
+  --floaty-image-filter: brightness(0) invert(0.9);
   --shadow-color: 215deg 23% 6%;
   --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
     0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),

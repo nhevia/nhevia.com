@@ -5,17 +5,16 @@ import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
-import { StackoverflowCard } from 'components/items/stackoverflow';
-import { Repository, Post, So } from 'types/items';
+import { StackoverflowCard, Skills } from 'components/activity';
+import { Repository, Post } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
   repoData: Array<Repository>;
   postData: Array<Post>;
-  soData: Array<So>;
 }
 
-export default function Home({ repoData, postData, soData }: Props) {
+export default function Home({ repoData, postData }: Props) {
   const [theme, setTheme] = useState('theme-dark');
 
   return (
@@ -29,12 +28,17 @@ export default function Home({ repoData, postData, soData }: Props) {
 
       <main>
         <article className={s.about}>
-          <div className={s.me}>
+          <div className={s.introduction}>
             Hi. I&apos;m
             <span className={s['name-container']}>
               <span className={s.name}>Nicolas Hevia</span>
             </span>
             , a web developer.
+          </div>
+
+          <div className={s.activity}>
+            <StackoverflowCard />
+            <Skills />
           </div>
         </article>
         <article className={s.projects}>
@@ -68,18 +72,6 @@ export default function Home({ repoData, postData, soData }: Props) {
             />
           </div>
         </article>
-
-        <article className={s.stackoverflow}>
-          <h3 className={s.label}>StackOverflow activity</h3>
-
-          <div>
-            <List
-              items={soData}
-              renderItem={StackoverflowCard}
-              as={React.Fragment}
-            />
-          </div>
-        </article>
       </main>
 
       <footer>
@@ -90,8 +82,8 @@ export default function Home({ repoData, postData, soData }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  // TODO remove local data later, just to reduce load in dev for now
-  let repoData, postData, normalizedSoData;
+  // TODO reduce endpoint hits on DEV
+  let repoData, postData;
   if (process.env.NODE_ENV === 'development') {
     repoData = JSON.parse(
       fs.readFileSync('src/__mocks__/repos.json').toString()
@@ -99,35 +91,20 @@ export const getServerSideProps = async () => {
     postData = JSON.parse(
       fs.readFileSync('src/__mocks__/posts.json').toString()
     );
-    const soData = JSON.parse(
-      fs.readFileSync('src/__mocks__/so.json').toString()
-    );
-    normalizedSoData = soData.items.map((i: any) => ({
-      ...i,
-      id: i.post_id,
-      carlos: 'dasdsd',
-    }));
   } else {
     const repoResponse = await fetch(
       'https://api.github.com/users/nhevia/repos'
     );
     repoData = await repoResponse.json();
 
-    // TODO will need to combine different sources later (md files, dev.to, etc)
-    // need standarized props and parse data into same object
+    // TODO need standarized data to combine different sources (markdown, dev.to, etc)
     const postResponse = await fetch(
       'https://dev.to/api/articles?username=nicoh'
     );
     postData = await postResponse.json();
-
-    const soResponse = await fetch(
-      'https://api.stackexchange.com/2.3/users/6402990/posts?pagesize=5&order=desc&sort=votes&site=stackoverflow&filter=!nKzQUR.3CQ'
-    );
-    const soData = await soResponse.json();
-    normalizedSoData = soData.items.map((i: any) => ({ ...i, id: i.post_id }));
   }
 
   return {
-    props: { repoData, postData, soData: normalizedSoData },
+    props: { repoData, postData },
   };
 };

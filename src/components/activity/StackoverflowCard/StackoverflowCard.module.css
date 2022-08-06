@@ -1,0 +1,34 @@
+.root {
+  max-width: 100%;
+  height: 100%;
+  background-color: var(--floaty-background);
+  border: 1px solid var(--floaty-border);
+  padding: 10px;
+  font-size: 0.85em;
+  font-family: sans-serif;
+}
+
+.card g {
+  animation: fadeInAnimation 0.8s ease-in-out forwards;
+  opacity: 0;
+}
+
+.card g:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.card g:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.card g:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+.soimage {
+  filter: var(--floaty-image-filter);
+}
+
+@keyframes fadeInAnimation {
+  to {
+    opacity: 1;
+  }
+}
