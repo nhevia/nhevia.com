@@ -10,13 +10,16 @@ export default function useActivityQuery(key: string) {
     );
     const data = await response.json();
 
-    const responseTop = await fetch(
-      'https://stackoverflow.com/users/rank?userId=6402990'
-    );
+    // TODO on dev it works but on prod it hits cors limitation (runs in client)
+    // const responseTop = await fetch(
+    //   'https://stackoverflow.com/users/rank?userId=6402990'
+    // );
 
-    const ratingText = (await responseTop.text())
-      .trim()
-      .replace(/(<([^>]+)>)/gi, '');
+    // const ratingText = (await responseTop.text())
+    //   .trim()
+    //   .replace(/(<([^>]+)>)/gi, '');
+
+    const ratingText = 'Top 2% this quarter';
 
     const userInfo = { ...data.items[0], rating: ratingText };
 
@@ -25,6 +28,7 @@ export default function useActivityQuery(key: string) {
 
   const { data, refetch } = useQuery(key, getActivity, {
     refetchOnWindowFocus: false,
+    retry: 2,
     enabled: false,
   });
 
