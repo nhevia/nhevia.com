@@ -8,7 +8,6 @@
 
 .projects,
 .posts,
-.stackoverflow,
 .about {
   padding: 20px 50px;
   width: 100%;
@@ -27,8 +26,7 @@
 }
 
 .projects h3,
-.posts h3,
-.stackoverflow h3 {
+.posts h3 {
   margin: 15px;
   letter-spacing: 1.2px;
   font-weight: 600;
@@ -81,10 +79,6 @@
   color: var(--accent);
 }
 
-.stackoverflow {
-  padding: 20px 30px;
-}
-
 .contentList {
   width: 100%;
   display: flex;
@@ -116,14 +110,12 @@
 
 @media (max-width: 600px) {
   .projects,
-  .posts,
-  .stackoverflow {
+  .posts {
     padding: 5px 10px;
   }
 
   .projects h3,
-  .posts h3,
-  .stackoverflow h3 {
+  .posts h3 {
     margin-left: 0px;
   }
 

@@ -27,7 +27,7 @@ export default function Home({ repoData, postData }: Props) {
       <Header theme={theme} setTheme={setTheme} />
 
       <main>
-        <article className={s.about}>
+        <section className={s.about}>
           <div className={s.introduction}>
             Hi. I&apos;m
             <span className={s['name-container']}>
@@ -40,8 +40,8 @@ export default function Home({ repoData, postData }: Props) {
             <StackoverflowCard />
             <Skills />
           </div>
-        </article>
-        <article className={s.projects}>
+        </section>
+        <section className={s.projects}>
           <h3 className={s.label}>Projects Repos</h3>
 
           <div>
@@ -59,9 +59,9 @@ export default function Home({ repoData, postData }: Props) {
               className={s.contentList}
             />
           </div>
-        </article>
+        </section>
 
-        <article className={s.posts}>
+        <section className={s.posts}>
           <h3 className={s.label}>Blog Posts</h3>
 
           <div>
@@ -71,7 +71,7 @@ export default function Home({ repoData, postData }: Props) {
               className={s.contentList}
             />
           </div>
-        </article>
+        </section>
       </main>
 
       <footer>
