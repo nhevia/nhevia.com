@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
+import Projects from 'components/items/Projects';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
 import { StackoverflowCard, Skills } from 'components/activity';
@@ -41,9 +42,18 @@ export default function Home({ repoData, postData }: Props) {
             <Skills />
           </div>
         </section>
-        <section className={s.projects}>
-          <h3 className={s.label}>Projects Repos</h3>
 
+        <section className={s.fprojects}>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Featured projects</h3>
+          </div>
+          <Projects />
+        </section>
+
+        <section className={s.projects}>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Other projects</h3>
+          </div>
           <div>
             <List
               items={repoData.sort((a: Repository, b: Repository) => {
@@ -62,7 +72,9 @@ export default function Home({ repoData, postData }: Props) {
         </section>
 
         <section className={s.posts}>
-          <h3 className={s.label}>Blog Posts</h3>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Blog Posts</h3>
+          </div>
 
           <div>
             <List

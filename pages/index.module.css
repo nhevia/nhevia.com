@@ -13,10 +13,14 @@
   width: 100%;
 }
 
+.fprojects {
+  padding: 20px 100px;
+  width: 100%;
+}
+
 .about {
   display: flex;
-  justify-content: space-evenly;
-  margin-left: 15px;
+  justify-content: space-around;
 }
 
 .activity {
@@ -25,6 +29,7 @@
   margin-left: 100px;
 }
 
+.fprojects h3,
 .projects h3,
 .posts h3 {
   margin: 15px;
@@ -52,7 +57,7 @@
 }
 
 .name {
-  color: var(--accent);
+  color: var(--accent-body-text);
   margin: 0px;
   display: inline-block;
   margin-right: 5px;
@@ -66,17 +71,25 @@
   width: 0px;
   bottom: 0;
   left: 10px;
-  background: var(--accent);
+  background: var(--accent-body-text);
   animation: expand 0.8s ease-out;
   animation-fill-mode: forwards;
 }
 
-.label::before {
-  content: '|';
-  font-weight: 600;
-  font-size: 1.2em;
-  margin-right: 10px;
-  color: var(--accent);
+.label-container {
+  position: relative;
+  width: fit-content;
+}
+
+.label::after {
+  content: '';
+  background: var(--accent-body-text);
+  height: 1px;
+  width: 80%;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  margin-left: 15px;
 }
 
 .contentList {
@@ -109,14 +122,20 @@
 }
 
 @media (max-width: 600px) {
+  .fprojects,
   .projects,
   .posts {
     padding: 5px 10px;
   }
 
+  .fprojects h3,
   .projects h3,
   .posts h3 {
-    margin-left: 0px;
+    margin-left: 10px;
+  }
+
+  .fprojects h3 {
+    margin-top: 40px;
   }
 
   .introduction {
