@@ -4,9 +4,9 @@ import Star from 'public/icons/star.svg';
 import Fork from 'public/icons/fork.svg';
 import { getLanguageColor } from 'utils/colors';
 import { Repository } from 'types/items';
-import s from './RepositoryCard.module.css';
+import s from './ProjectCard.module.css';
 
-const Card = ({
+const ProjectCard = ({
   id,
   full_name,
   description,
@@ -67,4 +67,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default ProjectCard;

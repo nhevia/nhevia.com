@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
-import FeaturedProjects from 'components/items/ProjectFeatured/ProjectFeaturedCard';
-import { RepositoryCard } from 'components/items/repository';
-import { BlogpostCard } from 'components/items/blogpost';
+import {
+  BlogpostCard,
+  ProjectFeaturedCard,
+  ProjectCard,
+} from 'components/items';
 import { StackoverflowCard, Skills } from 'components/activity';
 import { ProjectFeatured, Repository, Post } from 'types/items';
 import s from './index.module.css';
@@ -50,7 +52,10 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
             <h3 className={s.label}>Featured projects</h3>
           </div>
 
-          <List items={featuredRepoData} renderItem={FeaturedProjects}></List>
+          <List
+            items={featuredRepoData}
+            renderItem={ProjectFeaturedCard}
+          ></List>
         </section>
 
         <section className={s.projects}>
@@ -68,7 +73,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
 
                 return a.stargazers_count > b.stargazers_count ? -1 : 1;
               })}
-              renderItem={RepositoryCard}
+              renderItem={ProjectCard}
               className={s.contentList}
             />
           </div>

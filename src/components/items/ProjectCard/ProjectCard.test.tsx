@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import fs from 'fs';
-import RepositoryCard from './RepositoryCard';
+import ProjectCard from './ProjectCard';
 import { Repository } from 'types/items';
 
 describe('RepositoryCard', () => {
@@ -12,11 +12,11 @@ describe('RepositoryCard', () => {
   });
 
   it('renders the component without any props', () => {
-    render(<RepositoryCard />);
+    render(<ProjectCard />);
   });
 
   it('renders the component with full props', () => {
-    render(<RepositoryCard {...repoProps} />);
+    render(<ProjectCard {...repoProps} />);
 
     const url = screen.getByRole('link');
     const title = screen.getByTestId('title');
