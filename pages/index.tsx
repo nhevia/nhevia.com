@@ -118,9 +118,38 @@ export const getServerSideProps = async () => {
     postData = await postResponse.json();
   }
 
-  const featuredRepoData = JSON.parse(
-    fs.readFileSync('src/__mocks__/reposfeatured.json').toString()
-  );
+  // const featuredRepoData = JSON.parse(
+  //   fs.readFileSync('src/__mocks__/reposfeatured.json').toString()
+  // );
+
+  const featuredRepoData = [
+    {
+      title: 'The Source',
+      description:
+        'A social media site for a well-known online RPG video game. This project features accounts, events management, media, filters, tags, favourites, calendar, profile integration, themes and more.',
+      image:
+        'https://thesourceimages.nyc3.cdn.digitaloceanspaces.com/site/blog/thesource_thumb.jpg',
+      demo_url: 'https://www.thesource.fun',
+    },
+    {
+      title: 'xMarket',
+      description:
+        'A fully working e-commerce site with categories, filters, cart, checkout process and themes, ready to be used as a real store. Made with Next.js and TypeScript, it features full testing coverage, global store (Zustand), css-modules and Stripe integration.',
+      image:
+        'https://thesourceimages.nyc3.cdn.digitaloceanspaces.com/site/blog/xmarket_thumb.jpg',
+      demo_url: 'https://xmarket-nhevia.vercel.app',
+      code_url: 'https://github.com/nhevia/xmarket',
+    },
+    {
+      title: 'Smart Trader',
+      description:
+        'A software executable (made with Electron.js) that works as an interface for a well-known crypto exchanger. It features adjusted auto buy/sell placements and live tracking.',
+      image:
+        'https://thesourceimages.nyc3.cdn.digitaloceanspaces.com/site/blog/smarttrader_thumb.jpg',
+      demo_url: 'https://github.com/nhevia/smart-trader/releases',
+      code_url: 'https://github.com/nhevia/smart-trader',
+    },
+  ];
 
   return {
     props: { featuredRepoData, repoData, postData },
