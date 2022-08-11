@@ -7,13 +7,14 @@ export interface ProjectFeatured {
 }
 
 export interface Repository {
-  full_name?: string;
-  description?: string;
-  html_url?: string;
-  language?: string;
-  stargazers_count?: number;
-  forks?: number;
-  id?: number;
+  id: number;
+  name: string;
+  full_name: string;
+  html_url: string;
+  description: string;
+  created_at: string;
+  language: string;
+  topics?: string[];
 }
 
 export interface Post {

@@ -64,15 +64,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
           </div>
           <div>
             <List
-              items={repoData.sort((a: Repository, b: Repository) => {
-                if (typeof a.stargazers_count === 'undefined')
-                  a.stargazers_count = 0;
-
-                if (typeof b.stargazers_count === 'undefined')
-                  b.stargazers_count = 0;
-
-                return a.stargazers_count > b.stargazers_count ? -1 : 1;
-              })}
+              items={repoData}
               renderItem={ProjectCard}
               className={s.contentList}
             />
@@ -101,23 +93,14 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
   );
 }
 
-export const getServerSideProps = async () => {
-  // TODO reduce endpoint hits on DEV
-  const dataDirectory = path.join(process.cwd(), 'src/__mocks__');
-  let repoData, postData;
+export const getStaticProps = async () => {
+  const dataDirectory = path.join(process.cwd(), 'src/data');
+  let postData;
   if (process.env.NODE_ENV === 'development') {
-    repoData = JSON.parse(
-      fs.readFileSync('src/__mocks__/repos.json').toString()
-    );
     postData = JSON.parse(
       fs.readFileSync('src/__mocks__/posts.json').toString()
     );
   } else {
-    const repoResponse = await fetch(
-      'https://api.github.com/users/nhevia/repos'
-    );
-    repoData = await repoResponse.json();
-
     // TODO need standarized data to combine different sources (markdown, dev.to, etc)
     const postResponse = await fetch(
       'https://dev.to/api/articles?username=nicoh'
@@ -127,6 +110,9 @@ export const getServerSideProps = async () => {
 
   const featuredRepoData = JSON.parse(
     fs.readFileSync(`${dataDirectory}/reposfeatured.json`).toString()
+  );
+  const repoData = JSON.parse(
+    fs.readFileSync(`${dataDirectory}/repos.json`).toString()
   );
 
   return {
