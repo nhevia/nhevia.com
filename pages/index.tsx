@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
-import Projects from 'components/items/Projects';
+import FeaturedProjects from 'components/items/ProjectFeatured/ProjectFeaturedCard';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
 import { StackoverflowCard, Skills } from 'components/activity';
@@ -11,11 +11,12 @@ import { Repository, Post } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
+  featuredRepoData: any;
   repoData: Array<Repository>;
   postData: Array<Post>;
 }
 
-export default function Home({ repoData, postData }: Props) {
+export default function Home({ featuredRepoData, repoData, postData }: Props) {
   const [theme, setTheme] = useState('theme-dark');
 
   return (
@@ -47,7 +48,8 @@ export default function Home({ repoData, postData }: Props) {
           <div className={s['label-container']}>
             <h3 className={s.label}>Featured projects</h3>
           </div>
-          <Projects />
+
+          <List items={featuredRepoData} renderItem={FeaturedProjects}></List>
         </section>
 
         <section className={s.projects}>
@@ -116,7 +118,11 @@ export const getServerSideProps = async () => {
     postData = await postResponse.json();
   }
 
+  const featuredRepoData = JSON.parse(
+    fs.readFileSync('src/__mocks__/reposfeatured.json').toString()
+  );
+
   return {
-    props: { repoData, postData },
+    props: { featuredRepoData, repoData, postData },
   };
 };
