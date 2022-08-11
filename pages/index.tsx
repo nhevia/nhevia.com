@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
@@ -97,6 +98,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
 
 export const getServerSideProps = async () => {
   // TODO reduce endpoint hits on DEV
+  const dataDirectory = path.join(process.cwd(), 'src/__mocks__');
   let repoData, postData;
   if (process.env.NODE_ENV === 'development') {
     repoData = JSON.parse(
@@ -119,7 +121,7 @@ export const getServerSideProps = async () => {
   }
 
   const featuredRepoData = JSON.parse(
-    fs.readFileSync('src/__mocks__/reposfeatured.json').toString()
+    fs.readFileSync(`${dataDirectory}/reposfeatured.json`).toString()
   );
 
   return {
