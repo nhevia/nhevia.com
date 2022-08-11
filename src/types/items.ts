@@ -1,3 +1,11 @@
+export interface ProjectFeatured {
+  title: string;
+  description: string;
+  image: string;
+  demo_url?: string;
+  code_url?: string;
+}
+
 export interface Repository {
   full_name?: string;
   description?: string;

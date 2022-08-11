@@ -7,13 +7,13 @@ import FeaturedProjects from 'components/items/ProjectFeatured/ProjectFeaturedCa
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
 import { StackoverflowCard, Skills } from 'components/activity';
-import { Repository, Post } from 'types/items';
+import { ProjectFeatured, Repository, Post } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
-  featuredRepoData: any;
-  repoData: Array<Repository>;
-  postData: Array<Post>;
+  featuredRepoData: ProjectFeatured[];
+  repoData: Repository[];
+  postData: Post[];
 }
 
 export default function Home({ featuredRepoData, repoData, postData }: Props) {

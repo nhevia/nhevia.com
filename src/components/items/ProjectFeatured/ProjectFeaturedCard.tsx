@@ -1,13 +1,6 @@
 import React from 'react';
+import { ProjectFeatured } from 'types/items';
 import s from './ProjectFeaturedCard.module.css';
-
-interface ProjectFeatured {
-  title: string;
-  description: string;
-  image: string;
-  demo_url?: string;
-  code_url?: string;
-}
 
 const ProjectFeaturedCard = ({
   title,
