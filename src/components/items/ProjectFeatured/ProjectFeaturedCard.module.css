@@ -7,8 +7,7 @@
   margin-right: 20px;
   min-height: 320px;
   position: relative;
-  margin-bottom: 30px;
-  margin-left: 20px;
+  margin-bottom: 40px;
 }
 
 .project:nth-child(even) {
@@ -87,7 +86,6 @@
   font-size: 0.9em;
   letter-spacing: 0.8px;
   line-height: 1.5em;
-  /* border-radius: 10px; */
   background-color: var(--accent-body-background);
   box-shadow: var(--shadow-elevation-medium);
   color: var(--text-accent-color);
@@ -96,7 +94,7 @@
 .buttons {
   position: absolute;
   z-index: inherit;
-  bottom: 20%;
+  bottom: 10%;
   right: 0;
   display: flex;
 }
@@ -134,9 +132,15 @@
 
 @media (max-width: 1000px) {
   .buttons {
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
+    bottom: -10px;
+  }
+
+  .title {
+    background-color: var(--shadow-elevation-high);
+    width: 100%;
+  }
+  .title::before {
+    content: none;
   }
 }
 
@@ -169,7 +173,9 @@
   }
 
   .project .buttons {
-    left: inherit !important;
+    right: inherit;
+    left: 50% !important;
+    transform: translateX(-50%);
   }
 }
 
@@ -183,6 +189,6 @@
   }
 
   .image {
-    margin-bottom: 0px;
+    display: none;
   }
 }

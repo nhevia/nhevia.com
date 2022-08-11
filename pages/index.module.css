@@ -79,6 +79,7 @@
 .label-container {
   position: relative;
   width: fit-content;
+  margin-bottom: 30px;
 }
 
 .label::after {
@@ -104,6 +105,10 @@
 @media (max-width: 900px) {
   .activity {
     flex-direction: column;
+  }
+
+  .fprojects {
+    padding: 20px 50px;
   }
 }
 
