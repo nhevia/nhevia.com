@@ -3,18 +3,20 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
 import List from 'components/ui/List/List';
+import FeaturedProjects from 'components/items/ProjectFeatured/ProjectFeaturedCard';
 import { RepositoryCard } from 'components/items/repository';
 import { BlogpostCard } from 'components/items/blogpost';
 import { StackoverflowCard, Skills } from 'components/activity';
-import { Repository, Post } from 'types/items';
+import { ProjectFeatured, Repository, Post } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
-  repoData: Array<Repository>;
-  postData: Array<Post>;
+  featuredRepoData: ProjectFeatured[];
+  repoData: Repository[];
+  postData: Post[];
 }
 
-export default function Home({ repoData, postData }: Props) {
+export default function Home({ featuredRepoData, repoData, postData }: Props) {
   const [theme, setTheme] = useState('theme-dark');
 
   return (
@@ -27,7 +29,7 @@ export default function Home({ repoData, postData }: Props) {
       <Header theme={theme} setTheme={setTheme} />
 
       <main>
-        <article className={s.about}>
+        <section className={s.about}>
           <div className={s.introduction}>
             Hi. I&apos;m
             <span className={s['name-container']}>
@@ -40,10 +42,20 @@ export default function Home({ repoData, postData }: Props) {
             <StackoverflowCard />
             <Skills />
           </div>
-        </article>
-        <article className={s.projects}>
-          <h3 className={s.label}>Projects Repos</h3>
+        </section>
 
+        <section className={s.fprojects}>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Featured projects</h3>
+          </div>
+
+          <List items={featuredRepoData} renderItem={FeaturedProjects}></List>
+        </section>
+
+        <section className={s.projects}>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Other projects</h3>
+          </div>
           <div>
             <List
               items={repoData.sort((a: Repository, b: Repository) => {
@@ -59,10 +71,12 @@ export default function Home({ repoData, postData }: Props) {
               className={s.contentList}
             />
           </div>
-        </article>
+        </section>
 
-        <article className={s.posts}>
-          <h3 className={s.label}>Blog Posts</h3>
+        <section className={s.posts}>
+          <div className={s['label-container']}>
+            <h3 className={s.label}>Blog Posts</h3>
+          </div>
 
           <div>
             <List
@@ -71,7 +85,7 @@ export default function Home({ repoData, postData }: Props) {
               className={s.contentList}
             />
           </div>
-        </article>
+        </section>
       </main>
 
       <footer>
@@ -104,7 +118,11 @@ export const getServerSideProps = async () => {
     postData = await postResponse.json();
   }
 
+  const featuredRepoData = JSON.parse(
+    fs.readFileSync('src/__mocks__/reposfeatured.json').toString()
+  );
+
   return {
-    props: { repoData, postData },
+    props: { featuredRepoData, repoData, postData },
   };
 };

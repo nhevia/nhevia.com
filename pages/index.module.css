@@ -8,16 +8,19 @@
 
 .projects,
 .posts,
-.stackoverflow,
 .about {
   padding: 20px 50px;
   width: 100%;
 }
 
+.fprojects {
+  padding: 20px 100px;
+  width: 100%;
+}
+
 .about {
   display: flex;
-  justify-content: space-evenly;
-  margin-left: 15px;
+  justify-content: space-around;
 }
 
 .activity {
@@ -26,9 +29,9 @@
   margin-left: 100px;
 }
 
+.fprojects h3,
 .projects h3,
-.posts h3,
-.stackoverflow h3 {
+.posts h3 {
   margin: 15px;
   letter-spacing: 1.2px;
   font-weight: 600;
@@ -54,7 +57,7 @@
 }
 
 .name {
-  color: var(--accent);
+  color: var(--accent-body-text);
   margin: 0px;
   display: inline-block;
   margin-right: 5px;
@@ -68,21 +71,26 @@
   width: 0px;
   bottom: 0;
   left: 10px;
-  background: var(--accent);
+  background: var(--accent-body-text);
   animation: expand 0.8s ease-out;
   animation-fill-mode: forwards;
 }
 
-.label::before {
-  content: '|';
-  font-weight: 600;
-  font-size: 1.2em;
-  margin-right: 10px;
-  color: var(--accent);
+.label-container {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 30px;
 }
 
-.stackoverflow {
-  padding: 20px 30px;
+.label::after {
+  content: '';
+  background: var(--accent-body-text);
+  height: 1px;
+  width: 80%;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  margin-left: 15px;
 }
 
 .contentList {
@@ -97,6 +105,10 @@
 @media (max-width: 900px) {
   .activity {
     flex-direction: column;
+  }
+
+  .fprojects {
+    padding: 20px 50px;
   }
 }
 
@@ -115,16 +127,20 @@
 }
 
 @media (max-width: 600px) {
+  .fprojects,
   .projects,
-  .posts,
-  .stackoverflow {
+  .posts {
     padding: 5px 10px;
   }
 
+  .fprojects h3,
   .projects h3,
-  .posts h3,
-  .stackoverflow h3 {
-    margin-left: 0px;
+  .posts h3 {
+    margin-left: 10px;
+  }
+
+  .fprojects h3 {
+    margin-top: 40px;
   }
 
   .introduction {

@@ -13,6 +13,10 @@ module.exports = {
     defaultLocale: 'en-US',
   },
   images: {
-    domains: ['dev.to', 'i.stack.imgur.com'],
+    domains: [
+      'dev.to',
+      'i.stack.imgur.com',
+      'thesourceimages.nyc3.cdn.digitaloceanspaces.com',
+    ],
   },
 };

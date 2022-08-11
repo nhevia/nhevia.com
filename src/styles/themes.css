@@ -1,9 +1,12 @@
 .theme-light {
   --body-background: #fff;
   --body-background-hover: #fdfbfb;
-  --accent-background: rgba(49, 49, 94);
+  --accent-background: #446189;
+  --accent-body-background: #263140;
+  --accent-body-text: #446189;
   --text-color: #35383b;
   --text-desc-color: #464a52ee;
+  --text-accent-color: rgb(200, 200, 200);
   --text-link: #0254b4;
   --text-link-hover: #587db0;
   --border-color: #d0d7de;
@@ -35,8 +38,11 @@
   --body-background: #22272e;
   --body-background-hover: #24282f;
   --accent-background: #202c3d;
+  --accent-body-background: #263140;
+  --accent-body-text: #7396c7;
   --text-color: rgb(197, 194, 194);
   --text-desc-color: #a9b0b6;
+  --text-accent-color: rgb(200, 200, 200);
   --text-link: #5984c0;
   --text-link-hover: #769dd2;
   --border-color: #444c56;
