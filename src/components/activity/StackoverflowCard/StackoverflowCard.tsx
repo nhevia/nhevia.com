@@ -1,10 +1,8 @@
-// import { useActivityQuery } from 'components/activity/StackoverflowCard';
 import { useState, useEffect } from 'react';
 import { StackoverflowData } from 'types/items';
 import s from './StackoverflowCard.module.css';
 
 const StackoverflowCard = () => {
-  // const item: StackoverflowData = useActivityQuery('activity');
   const [item, setItem] = useState<StackoverflowData>();
 
   const getActivityData = async () => {
