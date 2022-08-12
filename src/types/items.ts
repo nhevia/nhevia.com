@@ -27,9 +27,14 @@ export interface Post {
   id?: number;
 }
 
-export interface So {
-  score?: number;
-  id?: number;
-  link?: string;
-  title?: string;
+export interface StackoverflowData {
+  profile_image: string;
+  reputation: string;
+  link: string;
+  rating: string;
+  badge_counts: {
+    bronze: string;
+    silver: string;
+    gold: string;
+  };
 }
