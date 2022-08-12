@@ -1,15 +1,5 @@
 [
   {
-    "id": 206913932,
-    "name": "ctvee",
-    "full_name": "nhevia/ctvee",
-    "html_url": "https://github.com/nhevia/ctvee",
-    "description": "Site to query your favourite series",
-    "created_at": "2019-09-07T04:11:07Z",
-    "language": "JavaScript",
-    "topics": ["react"]
-  },
-  {
     "id": 333836136,
     "name": "discord-styled-releases",
     "full_name": "nhevia/discord-styled-releases",
@@ -18,15 +8,6 @@
     "created_at": "2021-01-28T17:38:27Z",
     "language": "JavaScript",
     "topics": ["discord", "discord-webhook", "github-actions", "patch-notes"]
-  },
-  {
-    "id": 480193749,
-    "name": "react-state",
-    "full_name": "nhevia/react-state",
-    "html_url": "https://github.com/nhevia/react-state",
-    "description": "Playground that showcases different ways to use state managers with react (context, RTL, Jotai, Zustand, etc)",
-    "created_at": "2022-04-11T02:00:30Z",
-    "language": "JavaScript"
   },
   {
     "id": 290752819,
@@ -47,5 +28,25 @@
     "created_at": "2022-06-16T14:14:07Z",
     "language": "TypeScript",
     "topics": ["nextjs", "scaffolder"]
+  },
+  {
+    "id": 206913932,
+    "name": "ctvee",
+    "full_name": "nhevia/ctvee",
+    "html_url": "https://github.com/nhevia/ctvee",
+    "description": "Site to query your favourite series",
+    "created_at": "2019-09-07T04:11:07Z",
+    "language": "JavaScript",
+    "topics": ["react"]
+  },
+
+  {
+    "id": 480193749,
+    "name": "react-state",
+    "full_name": "nhevia/react-state",
+    "html_url": "https://github.com/nhevia/react-state",
+    "description": "Playground that showcases different ways to use state managers with react (context, RTL, Jotai, Zustand, etc)",
+    "created_at": "2022-04-11T02:00:30Z",
+    "language": "JavaScript"
   }
 ]
