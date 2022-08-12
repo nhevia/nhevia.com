@@ -8,6 +8,7 @@ import {
   BlogpostCard,
   ProjectFeaturedCard,
   ProjectCard,
+  ProjectListFetch,
 } from 'components/items';
 import { StackoverflowCard, Skills } from 'components/activity';
 import { ProjectFeatured, Repository, Post } from 'types/items';
@@ -63,11 +64,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
             <h3 className={s.label}>Other projects</h3>
           </div>
           <div>
-            <List
-              items={repoData}
-              renderItem={ProjectCard}
-              className={s.contentList}
-            />
+            <ProjectListFetch items={repoData} renderItem={ProjectCard} />
           </div>
         </section>
 

@@ -1,21 +1,20 @@
-import { useActivityQuery } from 'components/activity/StackoverflowCard';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { StackoverflowData } from 'types/items';
 import s from './StackoverflowCard.module.css';
 
-type StackoverflowData = {
-  profile_image: string;
-  reputation: string;
-  link: string;
-  rating: string;
-  badge_counts: {
-    bronze: string;
-    silver: string;
-    gold: string;
-  };
-};
-
 const StackoverflowCard = () => {
-  const item: StackoverflowData = useActivityQuery('activity');
+  const [item, setItem] = useState<StackoverflowData>();
+
+  const getActivityData = async () => {
+    const response = await fetch('/api/stackoverflow-stats');
+    const data = await response.json();
+
+    return data;
+  };
+
+  useEffect(() => {
+    getActivityData().then((res) => setItem(res));
+  }, []);
 
   return (
     <div className={s.root} aria-label="stackoverflow activity card">
