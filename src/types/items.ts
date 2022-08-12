@@ -15,6 +15,8 @@ export interface Repository {
   created_at: string;
   language: string;
   topics?: string[];
+  stargazers_count?: string;
+  forks?: string;
 }
 
 export interface Post {
