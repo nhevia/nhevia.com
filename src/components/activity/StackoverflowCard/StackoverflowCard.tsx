@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Loader } from 'components/ui';
 import { StackoverflowData } from 'types/items';
 import s from './StackoverflowCard.module.css';
 
@@ -18,7 +19,7 @@ const StackoverflowCard = () => {
 
   return (
     <div className={s.root} aria-label="stackoverflow activity card">
-      {item && (
+      {item ? (
         <svg
           width={250}
           height={150}
@@ -87,6 +88,8 @@ const StackoverflowCard = () => {
             </text>
           </g>
         </svg>
+      ) : (
+        <Loader />
       )}
     </div>
   );

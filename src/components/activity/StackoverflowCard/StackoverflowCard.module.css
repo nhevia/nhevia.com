@@ -6,6 +6,8 @@
   padding: 10px;
   font-size: 0.85em;
   font-family: sans-serif;
+  min-width: 272px;
+  min-height: 192px;
 }
 
 .card g {
