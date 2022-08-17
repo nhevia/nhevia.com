@@ -99,7 +99,7 @@
   display: flex;
 }
 .project:nth-child(even) .buttons {
-  left: 0;
+  left: 5%;
 }
 
 .buttons button {
@@ -147,6 +147,7 @@
 @media (max-width: 700px) {
   .project {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-right: 0px;
   }
 
   .project:nth-child(even) .content {

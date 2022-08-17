@@ -5,7 +5,7 @@ import s from './BlogpostCard.module.css';
 const BlogpostCard = ({ id, url, title, social_image, description }: Post) => {
   return (
     <div key={id} className={s.root} aria-label="post summary">
-      <span className={s.image}>
+      <span>
         <a aria-label="" target="_blank" href={url} rel="noreferrer">
           <Image
             alt={title}
