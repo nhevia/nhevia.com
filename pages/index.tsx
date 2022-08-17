@@ -3,6 +3,7 @@ import path from 'path';
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/ui/Header';
+import Footer from 'components/ui/Footer';
 import List from 'components/ui/List/List';
 import {
   BlogpostCard,
@@ -83,9 +84,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
         </section>
       </main>
 
-      <footer>
-        <span>Nicolas Hevia @ 2022</span>
-      </footer>
+      <Footer />
     </div>
   );
 }

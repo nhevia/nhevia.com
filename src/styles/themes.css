@@ -4,6 +4,8 @@
   --accent-background: #446189;
   --accent-body-background: #263140;
   --accent-body-text: #446189;
+  --accent-text-link: #a5bfe3;
+  --accent-text-link-hover: #c5cedb;
   --text-color: #35383b;
   --text-desc-color: #464a52ee;
   --text-accent-color: rgb(200, 200, 200);
@@ -40,6 +42,8 @@
   --accent-background: #202c3d;
   --accent-body-background: #263140;
   --accent-body-text: #7396c7;
+  --accent-text-link: #5984c0;
+  --accent-text-link-hover: #769dd2;
   --text-color: rgb(197, 194, 194);
   --text-desc-color: #a9b0b6;
   --text-accent-color: rgb(200, 200, 200);
