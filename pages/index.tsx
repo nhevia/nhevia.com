@@ -17,11 +17,11 @@ import s from './index.module.css';
 
 interface Props {
   featuredRepoData: ProjectFeatured[];
-  repoData: Repository[];
+  repoIds: number[];
   postData: Post[];
 }
 
-export default function Home({ featuredRepoData, repoData, postData }: Props) {
+export default function Home({ featuredRepoData, repoIds, postData }: Props) {
   const [theme, setTheme] = useState('theme-dark');
 
   return (
@@ -50,9 +50,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
         </section>
 
         <section className={s.fprojects}>
-          <div className={s['label-container']}>
-            <h3 className={s.label}>Featured projects</h3>
-          </div>
+          <h3 className={s.label}>Featured projects</h3>
 
           <List
             items={featuredRepoData}
@@ -65,7 +63,7 @@ export default function Home({ featuredRepoData, repoData, postData }: Props) {
             <h3 className={s.label}>Other projects</h3>
           </div>
           <div>
-            <ProjectListFetch items={repoData} renderItem={ProjectCard} />
+            <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
           </div>
         </section>
 
@@ -107,11 +105,11 @@ export const getStaticProps = async () => {
   const featuredRepoData = JSON.parse(
     fs.readFileSync(`${dataDirectory}/reposfeatured.json`).toString()
   );
-  const repoData = JSON.parse(
+  const repoIds = JSON.parse(
     fs.readFileSync(`${dataDirectory}/repos.json`).toString()
   );
 
   return {
-    props: { featuredRepoData, repoData, postData },
+    props: { featuredRepoData, repoIds, postData },
   };
 };

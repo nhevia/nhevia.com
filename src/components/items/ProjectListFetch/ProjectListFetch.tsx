@@ -4,7 +4,7 @@ import s from './ProjectListFetch.module.css';
 import { Repository } from 'types/items';
 
 interface Props {
-  items: Repository[];
+  items: number[];
   renderItem: (item: Repository) => React.ReactNode;
 }
 
@@ -20,16 +20,22 @@ export default function ProjectListFetch({ items, renderItem }: Props) {
 
   useEffect(() => {
     getRepoData().then((res: Repository[]) => {
-      const newItems = items.map((item) => {
-        const repo = res.find((i) => i.id === item.id);
+      const newItems = items.map((id: number) => {
+        const repo = res.find((item) => item.id === id);
         if (repo) {
           return {
-            ...item,
+            id: id,
+            name: repo.name,
+            full_name: repo.full_name,
+            description: repo.description,
+            html_url: repo.html_url,
+            language: repo.language,
             stargazers_count: repo.stargazers_count,
             forks: repo.forks,
+            created_at: repo.created_at,
           };
         } else {
-          return item;
+          throw new Error('local repository id not found in github');
         }
       });
       setData(newItems);
