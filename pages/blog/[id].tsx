@@ -1,28 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import Head from 'next/head';
-// @ts-ignore
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
-type CodeProps = {
-  [key: string]: string;
-};
-
-const CodeBlock = ({ children, inline, className, ...props }: CodeProps) => {
-  const match = /language-(\w+)/.exec(className || '');
-  return !inline && match ? (
-    <SyntaxHighlighter language={match[1]} style={oneDark}>
-      {children}
-    </SyntaxHighlighter>
-  ) : (
-    <code className={className} {...props}>
-      {children}
-    </code>
-  );
-};
+import React, { Suspense } from 'react';
+const SyntaxHighlighter = React.lazy(
+  () => import('components/CodeHighlighter')
+);
 
 type Props = {
   htmlString: string;
@@ -37,10 +20,9 @@ export default function Post({ htmlString, data }: Props) {
       <Head>
         <title>{data.title}</title>
       </Head>
-      {/* @ts-ignore */}
-      <ReactMarkdown className="markdown-body" components={{ code: CodeBlock }}>
-        {htmlString}
-      </ReactMarkdown>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SyntaxHighlighter htmlString={htmlString} />
+      </Suspense>
     </div>
   );
 }
