@@ -3,27 +3,21 @@ import path from 'path';
 import matter from 'gray-matter';
 import Head from 'next/head';
 import React, { Suspense } from 'react';
+import Layout from 'components/layout/Layout';
 const SyntaxHighlighter = React.lazy(
   () => import('components/CodeHighlighter')
 );
 
-type Props = {
-  htmlString: string;
-  data: {
-    [key: string]: string;
-  };
-};
-
 export default function Post({ htmlString, data }: Props) {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>{data.title}</title>
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
         <SyntaxHighlighter htmlString={htmlString} />
       </Suspense>
-    </div>
+    </Layout>
   );
 }
 
@@ -59,3 +53,10 @@ export async function getStaticProps({ params: { id } }) {
     },
   };
 }
+
+type Props = {
+  htmlString: string;
+  data: {
+    [key: string]: string;
+  };
+};

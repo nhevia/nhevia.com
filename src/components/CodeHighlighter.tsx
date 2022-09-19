@@ -11,6 +11,7 @@ type CodeProps = {
 
 const CodeBlock = ({ children, inline, className, ...props }: CodeProps) => {
   return (
+    // @ts-ignore
     <SyntaxHighlighter language="jsx" style={dark}>
       {children}
     </SyntaxHighlighter>

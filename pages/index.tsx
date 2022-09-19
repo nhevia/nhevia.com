@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import React, { useState } from 'react';
 import Head from 'next/head';
-import Header from 'components/ui/Header';
-import Footer from 'components/ui/Footer';
+import Layout from 'components/layout/Layout';
 import List from 'components/ui/List/List';
 import {
   BlogpostCard,
@@ -12,7 +10,7 @@ import {
   ProjectListFetch,
 } from 'components/items';
 import { StackoverflowCard, Skills } from 'components/activity';
-import { ProjectFeatured, Repository, Post } from 'types/items';
+import { ProjectFeatured, Post } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
@@ -22,16 +20,12 @@ interface Props {
 }
 
 export default function Home({ featuredRepoData, repoIds, postData }: Props) {
-  const [theme, setTheme] = useState('theme-dark');
-
   return (
-    <div id="layout" className={`${s.root} ${theme}`}>
+    <Layout>
       <Head>
         <title>Nico Hevia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-
-      <Header theme={theme} setTheme={setTheme} />
 
       <main>
         <section className={s.about}>
@@ -81,9 +75,7 @@ export default function Home({ featuredRepoData, repoIds, postData }: Props) {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 
@@ -95,7 +87,7 @@ export const getStaticProps = async () => {
       fs.readFileSync('src/__mocks__/posts.json').toString()
     );
   } else {
-    // TODO need standarized data to combine different sources (markdown, dev.to, etc)
+    // TODO changing to markdown files
     const postResponse = await fetch(
       'https://dev.to/api/articles?username=nicoh'
     );

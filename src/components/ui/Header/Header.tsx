@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Github from 'public/icons/github.svg';
 import Twitter from 'public/icons/twitter.svg';
 import Sun from 'public/icons/sun.svg';
@@ -17,6 +18,12 @@ const Header = ({ theme, setTheme }: Props) => {
 
   return (
     <header className={s.root}>
+      <div className={s.left}>
+        <Link href="/">About</Link>
+        <Link href="/blog/post1">Blog</Link>
+      </div>
+
+      <div className={s.right}></div>
       <a
         aria-label="Github"
         target="_blank"
