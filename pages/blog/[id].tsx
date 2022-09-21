@@ -8,6 +8,20 @@ const SyntaxHighlighter = React.lazy(
   () => import('components/CodeHighlighter')
 );
 
+export type Post = {
+  data: {
+    title: string;
+    description: string;
+    created_at: string;
+  };
+  content: string;
+};
+
+type Props = {
+  htmlString: string;
+  data: Post['data'];
+};
+
 export default function Post({ htmlString, data }: Props) {
   return (
     <Layout>
@@ -53,10 +67,3 @@ export async function getStaticProps({ params: { id } }) {
     },
   };
 }
-
-type Props = {
-  htmlString: string;
-  data: {
-    [key: string]: string;
-  };
-};

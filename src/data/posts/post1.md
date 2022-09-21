@@ -1,5 +1,7 @@
 ---
 title: 'This is the first post'
+description: 'Vivamus sodales turpis nec ullamcorper ultricies. Nullam nec sapien sed enim aliquam lobortis id eget sem.'
+created_at: 11/08/22
 ---
 
 # The main content of the first post
@@ -12,13 +14,7 @@ import React from 'react';
 export default function App() {
   return (
     <div>
-      <p>Hello pur</p>
-      <p>Hello pur</p>
-      <p>Hello pur</p>
-      <p>Hello pur</p>
-      <p>Hello pur</p>
-      <p>Hello pur</p>
-
+      <p>Hello world</p>
     </div>;
   )
 }

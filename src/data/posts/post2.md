@@ -1,5 +1,7 @@
 ---
 title: 'And now this is the second post'
+description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus scelerisque ligula, eu facilisis neque maximus in. Quisque aliquet in leo at lacinia.'
+created_at: 15/09/22
 ---
 
 # The main content of a second post
