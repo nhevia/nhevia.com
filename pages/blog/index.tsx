@@ -1,24 +1,24 @@
-import fs from 'fs';
-import path from 'path';
 import React from 'react';
-import matter from 'gray-matter';
-import { Post } from './[id]';
 import Link from 'next/link';
+import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
+import { Post } from './[id]';
 
 type Props = {
-  posts: (Post & { slug: string })[];
+  data: {
+    allPosts: Post[];
+  };
 };
 
-export default function Blog({ posts }: Props) {
+export default function Blog({ data: { allPosts: posts } }: Props) {
   return (
     <Layout>
       <div>
         {posts.map((p) => (
-          <div key={p.data.title}>
-            <Link href={`/blog/${p.slug}`}>{p.data.title}</Link>
-            <span>{p.data.created_at}</span>
-            <p>{p.data.description}</p>
+          <div key={p.title}>
+            <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+            <span>{p.createdDate}</span>
+            <p>{p.description}</p>
           </div>
         ))}
       </div>
@@ -26,29 +26,28 @@ export default function Blog({ posts }: Props) {
   );
 }
 
-export function getStaticProps() {
-  // read all files names
-  const postsDirectory = path.join(process.cwd(), 'src/data/posts');
-  const files = fs.readdirSync(postsDirectory);
+const POSTS_QUERY = `
+  query MyQuery {
+    allPosts(orderBy: _createdAt_ASC) {
+      id
+      title
+      description
+      content
+      createdDate
+      image {
+        url
+      }
+      slug
+    }
+  }
+`;
 
-  const posts = files.map((fileName) => {
-    // read file content
-    const fullPath = path.join(postsDirectory, `${fileName}`);
-    const fileContent = fs.readFileSync(fullPath, 'utf8').toString();
-
-    // get file metadata
-    const parsedMarkdown = matter(fileContent);
-
-    return {
-      data: parsedMarkdown.data,
-      content: parsedMarkdown.content,
-      slug: fileName.replace('.md', ''),
-    };
+export async function getStaticProps(context: any) {
+  const data = await request({
+    query: POSTS_QUERY,
+    preview: context.preview,
   });
-
   return {
-    props: {
-      posts,
-    },
+    props: { data },
   };
 }

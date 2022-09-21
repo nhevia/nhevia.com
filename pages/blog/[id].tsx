@@ -1,69 +1,90 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import Head from 'next/head';
 import React, { Suspense } from 'react';
+import Head from 'next/head';
+import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
 const SyntaxHighlighter = React.lazy(
   () => import('components/CodeHighlighter')
 );
 
 export type Post = {
-  data: {
-    title: string;
-    description: string;
-    created_at: string;
+  id: string;
+  title: string;
+  createdDate: string;
+  image: {
+    url: string;
   };
+  description: string;
   content: string;
+  slug: string;
 };
 
 type Props = {
-  htmlString: string;
-  data: Post['data'];
+  data: {
+    post: Post;
+  };
 };
 
-export default function Post({ htmlString, data }: Props) {
+export default function Post({ data: { post } }: Props) {
   return (
     <Layout>
       <Head>
-        <title>{data.title}</title>
+        <title>{post.title}</title>
       </Head>
       <Suspense fallback={<div>Loading...</div>}>
-        <SyntaxHighlighter htmlString={htmlString} />
+        <SyntaxHighlighter htmlString={post.content} />
       </Suspense>
     </Layout>
   );
 }
 
-export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'src/data/posts');
-  const files = fs.readdirSync(postsDirectory);
+const PATHS_QUERY = `
+  query MyQuery {
+    allPosts {
+      slug
+    }
+  }
+`;
 
-  const paths = files.map((fileName) => ({
-    params: {
-      id: fileName.replace('.md', ''),
-    },
-  }));
+export const getStaticPaths = async (context: any) => {
+  const slugQuery = await request({
+    query: PATHS_QUERY,
+    preview: context.preview,
+  });
+
+  let paths: string[] = [];
+
+  slugQuery.allPosts.map((p: { slug: string }) =>
+    paths.push(`/blog/${p.slug}`)
+  );
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
-}
+};
 
-// @ts-ignore
-export async function getStaticProps({ params: { id } }) {
-  const postsDirectory = path.join(process.cwd(), 'src/data/posts');
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8').toString();
+const POST_QUERY = `
+  query allPosts($slug: String ) {
+    post(filter:{slug: {eq: $slug}}) {
+      title
+      content
+      createdDate
+      image {
+        url
+      }
+      description
+    }
+  }
+`;
 
-  // Use gray-matter to parse the post metadata section
-  const parsedMarkdown = matter(fileContents);
+export const getStaticProps = async ({ params, preview }: any) => {
+  const data = await request({
+    query: POST_QUERY,
+    preview: preview,
+    variables: { slug: params.id },
+  });
 
   return {
-    props: {
-      htmlString: parsedMarkdown.content,
-      data: parsedMarkdown.data,
-    },
+    props: { data },
   };
-}
+};

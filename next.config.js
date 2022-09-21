@@ -21,6 +21,7 @@ module.exports = withBundleAnalyzer({
       'dev.to',
       'i.stack.imgur.com',
       'thesourceimages.nyc3.cdn.digitaloceanspaces.com',
+      'www.datocms-assets.com',
     ],
   },
 });
