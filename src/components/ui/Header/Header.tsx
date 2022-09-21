@@ -20,7 +20,7 @@ const Header = ({ theme, setTheme }: Props) => {
     <header className={s.root}>
       <div className={s.left}>
         <Link href="/">About</Link>
-        <Link href="/blog/post1">Blog</Link>
+        <Link href="/blog">Blog</Link>
       </div>
 
       <div className={s.right}></div>

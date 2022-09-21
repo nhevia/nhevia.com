@@ -5,3 +5,10 @@
   background: var(--body-background);
   transition: all 0.2s linear;
 }
+
+.root > div {
+  flex: 1;
+  padding: 0px 200px;
+  margin: 50px 0px;
+  color: var(--text-color);
+}
