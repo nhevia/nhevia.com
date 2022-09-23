@@ -44,4 +44,9 @@
   .markdown-body ul {
     padding-inline-start: 10px;
   }
+
+  .markdown-body > p > code {
+    line-height: 2.5em;
+    font-size: 1em;
+  }
 }
