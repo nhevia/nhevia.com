@@ -61,10 +61,6 @@ blockquote > * {
   margin-left: 35px;
 }
 
-ul {
-  padding-inline-start: 0px;
-}
-
 * {
   box-sizing: border-box;
 }

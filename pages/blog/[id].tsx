@@ -5,6 +5,7 @@ import Layout from 'components/layout/Layout';
 const CodeHighlighter = React.lazy(
   () => import('components/blog/CodeHighlighter')
 );
+import s from './id.module.css';
 
 export type Post = {
   id: string;
@@ -31,29 +32,18 @@ export default function Post({ data: { post } }: Props) {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <div style={{ maxWidth: '750px', margin: '100px auto', padding: '0px' }}>
-        <div style={{ padding: '10px', margin: '10px 0px' }}>
-          <div style={{ marginBottom: '50px' }}>
-            <h2
-              style={{
-                marginBottom: 2,
-                fontSize: '1.8em',
-                fontFamily: 'Open Sans',
-                letterSpacing: '1px',
-              }}
-            >
-              {post.title}
-            </h2>
-            <small>
-              <span>{post.createdDate}</span> -{' '}
-              <span>{post.readingDuration} min read</span>
-            </small>
-          </div>
-
-          <Suspense fallback={<div>Loading...</div>}>
-            <CodeHighlighter htmlString={post.content} />
-          </Suspense>
+      <div className={s.root}>
+        <div className={s.header}>
+          <h2 className={s.title}>{post.title}</h2>
+          <small>
+            <span>{post.createdDate}</span> -{' '}
+            <span>{post.readingDuration} min read</span>
+          </small>
         </div>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <CodeHighlighter htmlString={post.content} />
+        </Suspense>
       </div>
     </Layout>
   );

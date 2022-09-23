@@ -30,3 +30,18 @@
   background: rgb(40, 44, 52);
   padding: 1em;
 }
+
+.markdown-body ul {
+  padding-inline-start: 0px;
+}
+
+@media (max-width: 750px) {
+  .root {
+    margin: 50px 0px !important;
+    padding: 20px !important;
+  }
+
+  .markdown-body ul {
+    padding-inline-start: 10px;
+  }
+}
