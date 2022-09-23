@@ -19,7 +19,7 @@
 .markdown-body code {
   background: rgb(40, 44, 52);
   color: var(--text-accent-color);
-  padding: 4px 8px;
+  padding: 3px 5px;
 }
 
 .markdown-body pre > pre > code {
@@ -28,7 +28,7 @@
 
 .markdown-body > p > code {
   background: rgb(40, 44, 52);
-  padding: 1em;
+  padding: 3px 5px;
 }
 
 .markdown-body ul {
@@ -46,7 +46,6 @@
   }
 
   .markdown-body > p > code {
-    line-height: 2.5em;
     font-size: 1em;
   }
 }
