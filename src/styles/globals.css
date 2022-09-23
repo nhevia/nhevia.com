@@ -16,6 +16,18 @@ div#__next {
   height: 100%;
 }
 
+html::-webkit-scrollbar {
+  width: 1em;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+html::-webkit-scrollbar-track {
+  background: #333;
+}
+
 a {
   color: var(--text-link);
   text-decoration: none;
@@ -24,12 +36,6 @@ a {
 a:hover {
   color: var(--text-link-hover);
   transition: color 0.15s linear;
-}
-
-header {
-  min-width: 100%;
-  padding: 15px 0px;
-  background-color: var(--accent-background);
 }
 
 main {

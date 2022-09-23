@@ -1,10 +1,12 @@
 .root {
+  min-width: 100%;
   margin-right: 50px;
   padding: 15px 0px;
   display: flex;
   justify-content: flex-end;
   position: fixed;
   z-index: 900;
+  background-color: var(--body-background);
 }
 
 .is-scrolled {
@@ -14,16 +16,34 @@
 
 .root svg {
   margin: 0px 40px;
-  fill: rgb(220, 220, 210);
-  vertical-align: top;
+  fill: var(--text-color);
 }
 
 .root svg:hover {
-  fill: rgb(240, 240, 220);
+  fill: var(--accent-body-text);
 }
 
 .root button {
   all: unset;
+}
+
+.root a {
+  color: var(--text-color);
+  margin: 0px 40px;
+  font-family: 'Playfair Display';
+  font-size: 1.25em;
+  letter-spacing: 3px;
+  display: inline-block;
+  transition: color 0.2s linear;
+}
+
+.root a:hover {
+  color: var(--accent-body-text);
+  border-bottom: 1px solid var(--accent-body-text);
+}
+
+.navigation-item {
+  margin-right: 50px;
 }
 
 @media (max-width: 600px) {

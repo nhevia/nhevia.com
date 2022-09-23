@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Github from 'public/icons/github.svg';
-import Twitter from 'public/icons/twitter.svg';
 import Sun from 'public/icons/sun.svg';
 import Moon from 'public/icons/moon.svg';
 import s from './Header.module.css';
@@ -36,28 +34,8 @@ const Header = ({ theme, setTheme }: Props) => {
 
   return (
     <header className={`${s.root} ${isScrolled && s['is-scrolled']}`}>
-      <div className={s.left}>
-        <Link href="/">About</Link>
-        <Link href="/blog">Blog</Link>
-      </div>
-
-      <div className={s.right}></div>
-      <a
-        aria-label="Github"
-        target="_blank"
-        href="https://github.com/nhevia"
-        rel="noreferrer"
-      >
-        <Github />
-      </a>
-      <a
-        aria-label="Twitter"
-        target="_blank"
-        href="https://twitter.com/n_hevia"
-        rel="noreferrer"
-      >
-        <Twitter />
-      </a>
+      <Link href="/">About</Link>
+      <Link href="/blog">Blog</Link>
       <button
         onClick={handleTheme}
         aria-label={`change to ${
