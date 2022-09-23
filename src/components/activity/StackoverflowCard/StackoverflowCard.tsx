@@ -7,8 +7,13 @@ const StackoverflowCard = () => {
   const [item, setItem] = useState<StackoverflowData>();
 
   const getActivityData = async () => {
-    const response = await fetch('/api/stackoverflow-stats');
-    const data = await response.json();
+    let data;
+    if (process.env.NODE_ENV === 'development') {
+      data = (await import('__mocks__/so.json')).default;
+    } else {
+      const response = await fetch('/api/stackoverflow-stats');
+      data = await response.json();
+    }
 
     return data;
   };

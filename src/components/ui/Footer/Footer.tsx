@@ -18,7 +18,7 @@ const Footer = () => {
           Contact me
         </a>
         <span className={s.divisor}></span>
-        <p className={s.section}>Nicolas Hevia @ 2022</p>
+        <span className={s.section}>Nicolas Hevia @ 2022</span>
         <span className={s.divisor}></span>
         <a href="https://github.com/nhevia/nhevia.com" className={s.section}>
           Site source code
