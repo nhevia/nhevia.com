@@ -9,12 +9,13 @@ const SyntaxHighlighter = React.lazy(
 export type Post = {
   id: string;
   title: string;
+  description: string;
+  content: string;
   createdDate: string;
+  readingDuration: string;
   image: {
     url: string;
   };
-  description: string;
-  content: string;
   slug: string;
 };
 
@@ -30,15 +31,36 @@ export default function Post({ data: { post } }: Props) {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <Suspense fallback={<div>Loading...</div>}>
-        <SyntaxHighlighter htmlString={post.content} />
-      </Suspense>
+      <div style={{ maxWidth: '750px', margin: '100px auto', padding: '0px' }}>
+        <div style={{ padding: '10px', margin: '10px 0px' }}>
+          <div style={{ marginBottom: '50px' }}>
+            <h2
+              style={{
+                marginBottom: 2,
+                fontSize: '1.8em',
+                fontFamily: 'Open Sans',
+                letterSpacing: '1px',
+              }}
+            >
+              {post.title}
+            </h2>
+            <small>
+              <span>{post.createdDate}</span> -{' '}
+              <span>{post.readingDuration} min read</span>
+            </small>
+          </div>
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <SyntaxHighlighter htmlString={post.content} />
+          </Suspense>
+        </div>
+      </div>
     </Layout>
   );
 }
 
 const PATHS_QUERY = `
-  query MyQuery {
+  query AllSlugs {
     allPosts {
       slug
     }
@@ -64,15 +86,18 @@ export const getStaticPaths = async (context: any) => {
 };
 
 const POST_QUERY = `
-  query allPosts($slug: String ) {
+  query onePost($slug: String ) {
     post(filter:{slug: {eq: $slug}}) {
+      id
       title
+      description
       content
       createdDate
+      readingDuration
       image {
         url
       }
-      description
+      slug
     }
   }
 `;

@@ -46,6 +46,26 @@ main {
   padding: 0px 200px;
 }
 
+p {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 1.75em;
+}
+
+blockquote {
+  border-left: 4px solid grey;
+  margin-inline-start: 0px;
+}
+
+blockquote > * {
+  margin-left: 35px;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
 * {
   box-sizing: border-box;
 }

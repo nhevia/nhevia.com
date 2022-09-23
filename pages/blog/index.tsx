@@ -13,13 +13,37 @@ type Props = {
 export default function Blog({ data: { allPosts: posts } }: Props) {
   return (
     <Layout>
-      <div>
+      <div
+        style={{
+          maxWidth: '700px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          padding: '2rem 1.2rem',
+        }}
+      >
         {posts.map((p) => (
-          <div key={p.title}>
-            <Link href={`/blog/${p.slug}`}>{p.title}</Link>
-            <span>{p.createdDate}</span>
-            <p>{p.description}</p>
-          </div>
+          <article key={p.id} style={{ padding: '0px 10px 10px 10px' }}>
+            <header>
+              <h2
+                style={{
+                  marginBottom: 2,
+                  fontSize: '1.8em',
+                  fontFamily: 'Open Sans',
+                  letterSpacing: '1px',
+                }}
+              >
+                <Link href={`/blog/${p.slug}`}>
+                  <a>{p.title}</a>
+                </Link>
+              </h2>
+              <small>
+                <span>{p.createdDate}</span> -{' '}
+                <span>{p.readingDuration} min read</span>
+              </small>
+            </header>
+
+            <p style={{ marginTop: 5 }}>{p.description}</p>
+          </article>
         ))}
       </div>
     </Layout>
@@ -27,13 +51,14 @@ export default function Blog({ data: { allPosts: posts } }: Props) {
 }
 
 const POSTS_QUERY = `
-  query MyQuery {
-    allPosts(orderBy: _createdAt_ASC) {
+  query allPosts {
+    allPosts(orderBy: _createdAt_DESC) {
       id
       title
       description
       content
       createdDate
+      readingDuration
       image {
         url
       }
