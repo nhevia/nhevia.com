@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import { dark } from 'utils/onedarkTheme';
+import s from './CodeHighlighter.module.css';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
@@ -10,11 +11,13 @@ type CodeProps = {
 };
 
 const CodeBlock = ({ children, inline, className, ...props }: CodeProps) => {
-  return (
+  return className?.includes('language') ? (
     // @ts-ignore
     <SyntaxHighlighter language="jsx" style={dark}>
       {children}
     </SyntaxHighlighter>
+  ) : (
+    <code>{children}</code>
   );
 };
 
@@ -24,8 +27,11 @@ type Props = {
 
 export default function CodeHighlighter({ htmlString }: Props) {
   return (
-    // @ts-ignore
-    <ReactMarkdown className="markdown-body" components={{ code: CodeBlock }}>
+    <ReactMarkdown
+      className={s['markdown-body']}
+      // @ts-ignore
+      components={{ code: CodeBlock }}
+    >
       {htmlString}
     </ReactMarkdown>
   );

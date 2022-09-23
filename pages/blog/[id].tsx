@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import Head from 'next/head';
 import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
-const SyntaxHighlighter = React.lazy(
-  () => import('components/CodeHighlighter')
+const CodeHighlighter = React.lazy(
+  () => import('components/blog/CodeHighlighter')
 );
 
 export type Post = {
@@ -51,7 +51,7 @@ export default function Post({ data: { post } }: Props) {
           </div>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <SyntaxHighlighter htmlString={post.content} />
+            <CodeHighlighter htmlString={post.content} />
           </Suspense>
         </div>
       </div>
