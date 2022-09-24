@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import Head from 'next/head';
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
 const CodeHighlighter = React.lazy(
@@ -28,11 +28,19 @@ type Props = {
 };
 
 export default function Post({ data: { post } }: Props) {
+  const { scrollYProgress } = useScroll();
+
   return (
     <Layout>
       <Head>
         <title>{post.title}</title>
       </Head>
+      <span style={{ position: 'relative' }}>
+        <motion.div
+          className={s['progress-bar']}
+          style={{ scaleX: scrollYProgress }}
+        />
+      </span>
 
       <motion.div
         className={s.root}
