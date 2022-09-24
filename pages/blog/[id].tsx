@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { motion, useScroll } from 'framer-motion';
 import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
+import { Loader } from 'components/ui';
 const CodeHighlighter = React.lazy(
   () => import('components/blog/CodeHighlighter')
 );
@@ -42,13 +43,7 @@ export default function Post({ data: { post } }: Props) {
         />
       </span>
 
-      <motion.div
-        className={s.root}
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ opacity: { duration: 0.5 }, x: { duration: 0.5 } }}
-      >
+      <div className={s.root}>
         <div className={s.header}>
           <h2 className={s.title}>{post.title}</h2>
           <small>
@@ -57,10 +52,10 @@ export default function Post({ data: { post } }: Props) {
           </small>
         </div>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <CodeHighlighter htmlString={post.content} />
         </Suspense>
-      </motion.div>
+      </div>
     </Layout>
   );
 }
