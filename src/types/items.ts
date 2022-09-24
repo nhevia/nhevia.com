@@ -19,14 +19,6 @@ export interface Repository {
   forks?: string;
 }
 
-export interface Post {
-  url?: string;
-  title?: string;
-  social_image?: string;
-  description?: string;
-  id?: number;
-}
-
 export interface StackoverflowData {
   profile_image: string;
   reputation: string;

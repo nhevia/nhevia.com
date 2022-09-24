@@ -4,22 +4,20 @@ import Head from 'next/head';
 import Layout from 'components/layout/Layout';
 import List from 'components/ui/List/List';
 import {
-  BlogpostCard,
   ProjectFeaturedCard,
   ProjectCard,
   ProjectListFetch,
 } from 'components/items';
 import { StackoverflowCard, Skills } from 'components/activity';
-import { ProjectFeatured, Post } from 'types/items';
+import { ProjectFeatured } from 'types/items';
 import s from './index.module.css';
 
 interface Props {
   featuredRepoData: ProjectFeatured[];
   repoIds: number[];
-  postData: Post[];
 }
 
-export default function Home({ featuredRepoData, repoIds, postData }: Props) {
+export default function Home({ featuredRepoData, repoIds }: Props) {
   return (
     <Layout>
       <Head>
@@ -60,20 +58,6 @@ export default function Home({ featuredRepoData, repoIds, postData }: Props) {
             <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
           </div>
         </section>
-
-        <section className={s.posts}>
-          <div className={s['label-container']}>
-            <h3 className={s.label}>Blog Posts</h3>
-          </div>
-
-          <div>
-            <List
-              items={postData}
-              renderItem={BlogpostCard}
-              className={s.contentList}
-            />
-          </div>
-        </section>
       </main>
     </Layout>
   );
@@ -81,18 +65,6 @@ export default function Home({ featuredRepoData, repoIds, postData }: Props) {
 
 export const getStaticProps = async () => {
   const dataDirectory = path.join(process.cwd(), 'src/data');
-  let postData;
-  if (process.env.NODE_ENV === 'development') {
-    postData = JSON.parse(
-      fs.readFileSync('src/__mocks__/posts.json').toString()
-    );
-  } else {
-    // TODO changing to markdown files
-    const postResponse = await fetch(
-      'https://dev.to/api/articles?username=nicoh'
-    );
-    postData = await postResponse.json();
-  }
 
   const featuredRepoData = JSON.parse(
     fs.readFileSync(`${dataDirectory}/reposfeatured.json`).toString()
@@ -102,6 +74,6 @@ export const getStaticProps = async () => {
   );
 
   return {
-    props: { featuredRepoData, repoIds, postData },
+    props: { featuredRepoData, repoIds },
   };
 };
