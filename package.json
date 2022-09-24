@@ -13,6 +13,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^12.3.0",
     "@svgr/webpack": "^6.1.2",
+    "framer-motion": "^7.3.6",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "gray-matter": "^4.0.3",
