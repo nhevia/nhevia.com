@@ -1,38 +1,70 @@
 .root {
   padding: 50px 0px;
-  background-color: var(--accent-background);
   text-align: center;
   color: rgb(200, 200, 200);
   font-size: 14px;
   font-weight: bold;
 }
 
-.sections {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 50%;
-  transform: translateX(50%);
-}
-
 .root a {
-  color: var(--accent-text-link);
+  color: var(--accent);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .root a:hover {
-  color: var(--accent-text-link-hover);
+  color: var(--body-background-hover);
+  background-color: var(--text-color);
+  border-radius: 50%;
+}
+.root a svg {
+  width: 50%;
+  height: 50%;
 }
 
-.divisor::after {
-  content: '|';
-  width: 1px;
+.sections {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+.dashline-container {
+  position: relative;
+  width: 100%;
+  height: 15px;
+  margin-bottom: 50px;
+}
+
+.dashline {
+  stroke: var(--accent);
+  stroke-dasharray: 15 100 15 100 15 100 15;
+  stroke-width: 1px;
+  animation: dash 50s linear forwards infinite;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  color: var(--text-color);
+}
+
+.divisor {
   height: 100%;
   color: rgb(120, 120, 120);
+  margin: 0px 40px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 750px) {
   .sections {
-    width: 100%;
-    transform: translateX(0%);
+    justify-content: space-evenly;
+    margin: 0px;
   }
 }
 
@@ -40,7 +72,19 @@
   .root {
     padding: 30px 0px;
   }
+}
 
-  .sections {
+@media (max-width: 400px) {
+  .divisor {
+    display: none;
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
