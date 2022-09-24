@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
 const CodeHighlighter = React.lazy(
@@ -32,7 +33,14 @@ export default function Post({ data: { post } }: Props) {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <div className={s.root}>
+
+      <motion.div
+        className={s.root}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ opacity: { duration: 0.5 }, x: { duration: 0.5 } }}
+      >
         <div className={s.header}>
           <h2 className={s.title}>{post.title}</h2>
           <small>
@@ -44,7 +52,7 @@ export default function Post({ data: { post } }: Props) {
         <Suspense fallback={<div>Loading...</div>}>
           <CodeHighlighter htmlString={post.content} />
         </Suspense>
-      </div>
+      </motion.div>
     </Layout>
   );
 }
