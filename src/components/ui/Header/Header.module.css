@@ -20,7 +20,6 @@
   width: 1.5em;
   height: 1.5em;
   fill: var(--text-color);
-  vertical-align: bottom;
 }
 
 .root svg:hover {
@@ -29,6 +28,8 @@
 
 .root button {
   all: unset;
+  display: flex;
+  align-items: center;
 }
 
 .root a {
@@ -37,8 +38,9 @@
   font-family: 'Playfair Display';
   font-size: 1.25em;
   letter-spacing: 3px;
-  display: inline-block;
+  display: block;
   transition: color 0.2s linear;
+  border-bottom: 1px solid transparent;
 }
 
 .root a:hover {
@@ -52,8 +54,7 @@
 
 @media (max-width: 600px) {
   .root {
-    display: block;
-    text-align: center;
+    justify-content: center;
     padding: 20px 0px;
   }
 
