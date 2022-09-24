@@ -1,33 +1,35 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import fs from 'fs';
+
+import { StackoverflowData } from 'types/items';
 import StackoverflowCard from './StackoverflowCard';
-import { So } from 'types/items';
 
 describe('StackoverflowCard', () => {
-  let soProps: So;
+  let soProps: StackoverflowData;
   beforeAll(() => {
-    soProps = JSON.parse(fs.readFileSync('src/__mocks__/so.json').toString())
-      .items[0];
+    soProps = JSON.parse(fs.readFileSync('src/__mocks__/so.json').toString());
   });
 
-  it('shows a stackoverflow card with a link, title and score', () => {
-    render(<StackoverflowCard />);
+  it('renders a card with stackoverflow activity', async () => {
+    await act(async () => {
+      render(<StackoverflowCard />);
+    });
 
-    expect(
-      screen.getByLabelText('stackoverflow activity card')
-    ).toBeInTheDocument();
-
-    expect(screen.getByText('(score: 1107)')).toBeInTheDocument();
-
+    expect(screen.getByText('Reputation: 13937')).toBeInTheDocument();
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute(
       'href',
-      'https://stackoverflow.com/a/64626556'
+      'https://stackoverflow.com/users/6402990/nicolas-hevia'
     );
+    expect(screen.getByText('Rating: top 2% this year')).toBeInTheDocument();
+    expect(screen.getByLabelText('stackoverflow logo')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Error: 'node-sass' version 5.0.0 is incompatible with ^4.0.0"
-      )
+      screen.getByLabelText('my stackoverflow avatar')
     ).toBeInTheDocument();
+
+    expect(screen.getByText('Badges:')).toBeInTheDocument();
+    expect(screen.getByText('● 4')).toBeInTheDocument();
+    expect(screen.getByText('● 21')).toBeInTheDocument();
+    expect(screen.getByText('● 30')).toBeInTheDocument();
   });
 });

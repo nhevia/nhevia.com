@@ -13,7 +13,10 @@ export default function ProjectListFetch({ items, renderItem }: Props) {
 
   const getRepoData = async () => {
     let data;
-    if (process.env.NODE_ENV === 'development') {
+    if (
+      process.env.NODE_ENV === 'test' ||
+      process.env.NODE_ENV === 'development'
+    ) {
       data = (await import('__mocks__/repos.json')).default;
     } else {
       const response = await fetch('/api/github-stats');

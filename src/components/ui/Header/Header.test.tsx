@@ -9,17 +9,18 @@ describe('<Header />', () => {
 
   it('shows twitter and github links', () => {
     render(<Header theme="theme-light" setTheme={mockTheme} />);
-
     expect(screen.getByRole('banner')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Twitter' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Github' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Blog' })).toBeInTheDocument();
   });
 
   it('changes theme from light to dark', () => {
     render(<Header theme="theme-light" setTheme={mockTheme} />);
 
     expect(screen.getByLabelText('change to dark theme')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByRole('button'), {});
     expect(mockTheme).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Blog' })).toBeInTheDocument();
   });
 });

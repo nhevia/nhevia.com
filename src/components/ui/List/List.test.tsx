@@ -1,18 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import List from './List';
-import { ProjectFeaturedCard, ProjectCard } from 'components/items';
-import repositories from '__mocks__/repos.json';
+import { ProjectFeaturedCard } from 'components/items';
+import repositories_featured from '__mocks__/reposfeatured.json';
 
 describe('List', () => {
-  it('renders two featured project cards in a list', () => {
-    render(<List items={repositories} renderItem={ProjectFeaturedCard} />);
+  it('renders three featured project cards in a list', () => {
+    render(
+      <List items={repositories_featured} renderItem={ProjectFeaturedCard} />
+    );
 
-    expect(screen.getAllByLabelText('post summary').length).toEqual(2);
-  });
-
-  it('renders four repositories in a list', () => {
-    render(<List items={repositories} renderItem={ProjectCard} />);
-
-    expect(screen.getAllByLabelText('repository summary').length).toEqual(4);
+    expect(screen.getAllByText('DEMO').length).toEqual(3);
   });
 });

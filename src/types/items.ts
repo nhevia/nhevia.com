@@ -11,12 +11,12 @@ export interface Repository {
   name: string;
   full_name: string;
   html_url: string;
-  description: string;
+  description: string | null;
   created_at: string;
-  language: string;
+  language: string | null;
   topics?: string[];
-  stargazers_count?: string;
-  forks?: string;
+  stargazers_count?: string | number;
+  forks?: string | number;
 }
 
 export interface StackoverflowData {

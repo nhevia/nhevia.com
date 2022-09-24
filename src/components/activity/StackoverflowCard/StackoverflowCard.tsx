@@ -8,7 +8,10 @@ const StackoverflowCard = () => {
 
   const getActivityData = async () => {
     let data;
-    if (process.env.NODE_ENV === 'development') {
+    if (
+      process.env.NODE_ENV === 'development' ||
+      process.env.NODE_ENV === 'test'
+    ) {
       data = (await import('__mocks__/so.json')).default;
     } else {
       const response = await fetch('/api/stackoverflow-stats');
@@ -23,7 +26,7 @@ const StackoverflowCard = () => {
   }, []);
 
   return (
-    <div className={s.root} aria-label="stackoverflow activity card">
+    <div className={s.root}>
       {item ? (
         <svg
           width={250}
@@ -40,6 +43,8 @@ const StackoverflowCard = () => {
             rel="noreferrer"
           >
             <svg
+              role="img"
+              aria-label="my stackoverflow avatar"
               width="50"
               height="50"
               x="200"
@@ -49,6 +54,8 @@ const StackoverflowCard = () => {
               <image href={item.profile_image} width="50" height="50" />
             </svg>
             <svg
+              role="img"
+              aria-label="stackoverflow logo"
               width="150"
               height="30"
               x="15"
@@ -83,11 +90,13 @@ const StackoverflowCard = () => {
               fill="var(--floaty-background-text)"
               className={s.line}
             >
-              <tspan fill="#F1B600">● {item.badge_counts.gold}</tspan>
-              <tspan fill="#9A9B9E" dx="1em">
+              <tspan fill="#F1B600" aria-label="gold">
+                ● {item.badge_counts.gold}
+              </tspan>
+              <tspan fill="#9A9B9E" dx="1em" aria-label="silver">
                 ● {item.badge_counts.silver}
               </tspan>
-              <tspan fill="#AB825F" dx="1em">
+              <tspan fill="#AB825F" dx="1em" aria-label="bronze">
                 ● {item.badge_counts.bronze}
               </tspan>
             </text>
