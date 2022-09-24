@@ -19,7 +19,7 @@
   top: 58px;
   left: 0;
   right: 0;
-  height: 10px;
+  height: 1px;
   background: var(--accent);
   transform-origin: 0%;
 }
