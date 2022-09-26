@@ -71,29 +71,9 @@ export default function Home({ featuredRepoData, repoIds }: Props) {
           <div className={s['label-container']}>
             <h3 className={s.label}>Other projects</h3>
           </div>
-          <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-          >
-            <motion.div
-              variants={{
-                offscreen: {
-                  y: 300,
-                },
-                onscreen: {
-                  y: 0,
-                  transition: {
-                    type: 'spring',
-                    bounce: 0.4,
-                    duration: 0.5,
-                  },
-                },
-              }}
-            >
-              <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
-            </motion.div>
-          </motion.div>
+          <div>
+            <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
+          </div>
         </section>
       </main>
     </Layout>
