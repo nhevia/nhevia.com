@@ -44,15 +44,28 @@ export default function Post({ data: { post } }: Props) {
       </span>
 
       <div className={s.root}>
-        <div className={s.header}>
-          <h2 className={s.title}>{post.title}</h2>
-          <small>
-            <span>{post.createdDate}</span> -{' '}
-            <span>{post.readingDuration} min read</span>
-          </small>
-        </div>
+        <Suspense
+          fallback={
+            <div>
+              <div className={s['header-loading']}>
+                <h2 className={s.title}>{post.title}</h2>
+                <small>
+                  <span>{post.createdDate}</span> -{' '}
+                  <span>{post.readingDuration} min read</span>
+                </small>
+              </div>
+              <Loader />
+            </div>
+          }
+        >
+          <div className={s.header}>
+            <h2 className={s.title}>{post.title}</h2>
+            <small>
+              <span>{post.createdDate}</span> -{' '}
+              <span>{post.readingDuration} min read</span>
+            </small>
+          </div>
 
-        <Suspense fallback={<Loader />}>
           <CodeHighlighter htmlString={post.content} />
         </Suspense>
       </div>

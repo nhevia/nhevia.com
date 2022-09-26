@@ -1,11 +1,15 @@
 .root {
-  max-width: 750px !important;
+  max-width: 750px;
   margin: 50px auto !important;
   padding: 20px !important;
 }
 
 .header {
   margin-bottom: 50px;
+}
+
+.header-loading {
+  width: 750px;
 }
 
 .title {
@@ -28,5 +32,9 @@
   .root {
     margin: 50px 0px !important;
     padding: 15px !important;
+  }
+
+  .header-loading {
+    width: auto;
   }
 }
