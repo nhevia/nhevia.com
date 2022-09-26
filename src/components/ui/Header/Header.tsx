@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
+import { ThemeContext } from 'context/theme';
 import Sun from 'public/icons/sun.svg';
 import Moon from 'public/icons/moon.svg';
 import s from './Header.module.css';
 
-interface Props {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
-
-const Header = ({ theme, setTheme }: Props) => {
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
