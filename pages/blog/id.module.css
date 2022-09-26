@@ -38,3 +38,9 @@
     width: auto;
   }
 }
+
+@media (max-width: 600px) {
+  .progress-bar {
+    top: 62px;
+  }
+}
