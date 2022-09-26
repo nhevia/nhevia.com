@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import Head from 'next/head';
+import { motion, useScroll } from 'framer-motion';
 import { request } from 'utils/cms';
 import Layout from 'components/layout/Layout';
+import { Loader } from 'components/ui';
 const CodeHighlighter = React.lazy(
   () => import('components/blog/CodeHighlighter')
 );
@@ -27,11 +29,20 @@ type Props = {
 };
 
 export default function Post({ data: { post } }: Props) {
+  const { scrollYProgress } = useScroll();
+
   return (
     <Layout>
       <Head>
         <title>{post.title}</title>
       </Head>
+      <span style={{ position: 'relative' }}>
+        <motion.div
+          className={s['progress-bar']}
+          style={{ scaleX: scrollYProgress }}
+        />
+      </span>
+
       <div className={s.root}>
         <div className={s.header}>
           <h2 className={s.title}>{post.title}</h2>
@@ -41,7 +52,7 @@ export default function Post({ data: { post } }: Props) {
           </small>
         </div>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <CodeHighlighter htmlString={post.content} />
         </Suspense>
       </div>

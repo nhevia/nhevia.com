@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import Layout from 'components/layout/Layout';
 import List from 'components/ui/List/List';
 import {
@@ -27,36 +28,72 @@ export default function Home({ featuredRepoData, repoIds }: Props) {
 
       <main>
         <section className={s.about}>
-          <div className={s.introduction}>
+          <motion.div
+            className={s.introduction}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ opacity: { duration: 0.5 }, x: { duration: 1 } }}
+          >
             Hi. I&apos;m
             <span className={s['name-container']}>
               <span className={s.name}>Nicolas Hevia</span>
             </span>
             , a web developer.
-          </div>
+          </motion.div>
 
-          <div className={s.activity}>
+          <motion.div
+            className={s.activity}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ opacity: { duration: 0.5 }, x: { duration: 1 } }}
+          >
             <StackoverflowCard />
             <Skills />
-          </div>
+          </motion.div>
         </section>
 
         <section className={s.fprojects}>
           <h3 className={s.label}>Featured projects</h3>
 
-          <List
-            items={featuredRepoData}
-            renderItem={ProjectFeaturedCard}
-          ></List>
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ opacity: { duration: 0.5 }, x: { duration: 1 } }}
+          >
+            <List
+              items={featuredRepoData}
+              renderItem={ProjectFeaturedCard}
+            ></List>
+          </motion.div>
         </section>
 
         <section className={s.projects}>
           <div className={s['label-container']}>
             <h3 className={s.label}>Other projects</h3>
           </div>
-          <div>
-            <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
-          </div>
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            <motion.div
+              variants={{
+                offscreen: {
+                  y: 300,
+                },
+                onscreen: {
+                  y: 0,
+                  transition: {
+                    type: 'spring',
+                    bounce: 0.4,
+                    duration: 0.5,
+                  },
+                },
+              }}
+            >
+              <ProjectListFetch items={repoIds} renderItem={ProjectCard} />
+            </motion.div>
+          </motion.div>
         </section>
       </main>
     </Layout>

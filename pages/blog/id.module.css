@@ -14,6 +14,16 @@
   letter-spacing: 1px;
 }
 
+.progress-bar {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: 0%;
+}
+
 @media (max-width: 750px) {
   .root {
     margin: 50px 0px !important;

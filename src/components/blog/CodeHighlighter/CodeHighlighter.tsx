@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
@@ -27,12 +28,19 @@ type Props = {
 
 export default function CodeHighlighter({ htmlString }: Props) {
   return (
-    <ReactMarkdown
-      className={s['markdown-body']}
-      // @ts-ignore
-      components={{ code: CodeBlock }}
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ opacity: { duration: 0.5 }, x: { duration: 0.5 } }}
     >
-      {htmlString}
-    </ReactMarkdown>
+      <ReactMarkdown
+        className={s['markdown-body']}
+        // @ts-ignore
+        components={{ code: CodeBlock }}
+      >
+        {htmlString}
+      </ReactMarkdown>
+    </motion.div>
   );
 }
