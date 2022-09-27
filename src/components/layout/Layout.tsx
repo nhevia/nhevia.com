@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from 'context/theme';
 import { Footer, Header } from 'components/ui';
 import s from './Layout.module.css';
 
@@ -7,11 +8,11 @@ type Props = {
 };
 
 export default function Layout({ children }: Props) {
-  const [theme, setTheme] = useState('theme-dark');
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div id="layout" className={`${s.root} ${theme}`}>
-      <Header theme={theme} setTheme={setTheme} />
+      <Header />
       {children}
       <Footer />
     </div>
